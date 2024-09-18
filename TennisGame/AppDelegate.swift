@@ -1,9 +1,4 @@
-//
-//  AppDelegate.swift
-//  TennisGame
-//
-//  Created by Александр Андреев on 18.09.2024.
-//
+
 
 import UIKit
 
