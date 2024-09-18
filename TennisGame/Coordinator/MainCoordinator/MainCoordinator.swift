@@ -4,7 +4,9 @@ import UIKit
 
 final class MainCoordinator: Coordinator {
     var navigationController: UINavigationController
+    
     var mainViewController: MainViewController!
+    var gameCoordinator: GameCoordinator!
     
     init() {
         self.navigationController = UINavigationController()
@@ -13,17 +15,20 @@ final class MainCoordinator: Coordinator {
     
     func start() {
         showMain()
-        //MARK:- ADD other
     }
     
     public func showMain() {
         mainViewController = MainViewController()
-        mainViewController.coordinator = self
-        
+        mainViewController.coordinator = self  // назначаем координатор
         navigationController.pushViewController(mainViewController, animated: false)
     }
+
     
-    
+    public func showGame() {
+        gameCoordinator = GameCoordinator()
+        gameCoordinator.navigationController = navigationController
+        gameCoordinator.start()
+    }
     
     
     

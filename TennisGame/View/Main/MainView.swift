@@ -81,7 +81,7 @@ class MainView: UIView {
         }
         
         gameStartButton.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
+            make.center.equalToSuperview()
             make.width.equalTo(200)
             make.height.equalTo(60)
         }

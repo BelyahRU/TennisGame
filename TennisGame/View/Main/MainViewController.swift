@@ -16,6 +16,7 @@ class MainViewController: UIViewController {
     
     private func configure() {
         setupUI()
+        setupButtons()
     }
     
     private func setupUI() {
@@ -26,5 +27,4 @@ class MainViewController: UIViewController {
         }
     }
     
-
 }
