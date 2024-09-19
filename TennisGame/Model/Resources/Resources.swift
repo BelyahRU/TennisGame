@@ -38,4 +38,17 @@ enum Resources {
         static let tennisBall = "tennisBall"
     }
     
+    enum LevelImages {
+        static let levelBlocked = "levelBlocked"
+        static let levelOpened = "levelOpened"
+        static let levelPassed1Star = "levelPassed1Star"
+        static let levelPassed2Star = "levelPassed2Star"
+        static let levelPassed3Star = "levelPassed3Star"
+    }
+    
+    enum Colors {
+        static let blockedLevelGrayText = UIColor(red: 136/255, green: 136/255, blue: 136/255, alpha: 1.0)
+
+    }
+    
 }

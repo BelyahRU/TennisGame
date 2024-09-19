@@ -19,8 +19,8 @@ extension LevelsViewController: UICollectionViewDataSource, UICollectionViewDele
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LevelCell.reuseId, for: indexPath) as? LevelCell else {
                     return UICollectionViewCell()
                 }
-                
-                return cell
+        cell.setupCell(number: indexPath.row + 1)
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

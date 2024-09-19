@@ -30,6 +30,8 @@
 		1AAE11F92C9CCAE900AF1F39 /* LevelsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE11F82C9CCAE900AF1F39 /* LevelsCoordinator.swift */; };
 		1AAE11FB2C9CCF5C00AF1F39 /* LevelsVC + CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE11FA2C9CCF5C00AF1F39 /* LevelsVC + CollectionView.swift */; };
 		1AAE11FD2C9CCFCE00AF1F39 /* LevelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE11FC2C9CCFCE00AF1F39 /* LevelCell.swift */; };
+		1AAE12012C9CDA3900AF1F39 /* DataConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE12002C9CDA3900AF1F39 /* DataConstraints.swift */; };
+		1AD899682C9CDF4500F9E65E /* BULGOGI.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1AD899672C9CDF4400F9E65E /* BULGOGI.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +59,8 @@
 		1AAE11F82C9CCAE900AF1F39 /* LevelsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelsCoordinator.swift; sourceTree = "<group>"; };
 		1AAE11FA2C9CCF5C00AF1F39 /* LevelsVC + CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LevelsVC + CollectionView.swift"; sourceTree = "<group>"; };
 		1AAE11FC2C9CCFCE00AF1F39 /* LevelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelCell.swift; sourceTree = "<group>"; };
+		1AAE12002C9CDA3900AF1F39 /* DataConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataConstraints.swift; sourceTree = "<group>"; };
+		1AD899672C9CDF4400F9E65E /* BULGOGI.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = BULGOGI.ttf; path = ../../../../../../../Downloads/bulgogi/BULGOGI.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +123,8 @@
 		1AAE11C32C9B433F00AF1F39 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1AD899662C9CDF3800F9E65E /* Font */,
+				1AAE11FF2C9CDA1C00AF1F39 /* Help */,
 				1AAE11C62C9B435900AF1F39 /* Support */,
 				1AAE11C52C9B435100AF1F39 /* Resources */,
 			);
@@ -237,6 +243,22 @@
 			path = CollectionView;
 			sourceTree = "<group>";
 		};
+		1AAE11FF2C9CDA1C00AF1F39 /* Help */ = {
+			isa = PBXGroup;
+			children = (
+				1AAE12002C9CDA3900AF1F39 /* DataConstraints.swift */,
+			);
+			path = Help;
+			sourceTree = "<group>";
+		};
+		1AD899662C9CDF3800F9E65E /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				1AD899672C9CDF4400F9E65E /* BULGOGI.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -302,6 +324,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1AAE11B52C9B40B900AF1F39 /* Assets.xcassets in Resources */,
+				1AD899682C9CDF4500F9E65E /* BULGOGI.ttf in Resources */,
 				1AAE11B82C9B40B900AF1F39 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -315,6 +338,7 @@
 			files = (
 				1AAE11C02C9B432D00AF1F39 /* Coordinator.swift in Sources */,
 				1AAE11D62C9B8B4100AF1F39 /* MainView.swift in Sources */,
+				1AAE12012C9CDA3900AF1F39 /* DataConstraints.swift in Sources */,
 				1AAE11D42C9B89E700AF1F39 /* Resources.swift in Sources */,
 				1AAE11E12C9B924B00AF1F39 /* GameCoordinator.swift in Sources */,
 				1AAE11F92C9CCAE900AF1F39 /* LevelsCoordinator.swift in Sources */,
@@ -478,6 +502,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TennisGame/Model/Support/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -505,6 +530,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TennisGame/Model/Support/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

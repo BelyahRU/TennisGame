@@ -21,12 +21,16 @@ final class LevelsView: UIView {
     private let aster1Image: UIImageView = {
         let im = UIImageView()
         im.image = UIImage(named: Resources.AsteroidImages.asteroidImage1)
+        im.clipsToBounds = true
+        im.contentMode = .scaleAspectFit
          return im
     }()
     
     private let aster2Image: UIImageView = {
         let im = UIImageView()
         im.image = UIImage(named: Resources.AsteroidImages.asteroidImage2)
+        im.clipsToBounds = true
+        im.contentMode = .scaleAspectFit
          return im
     }()
     
@@ -39,7 +43,7 @@ final class LevelsView: UIView {
     public let levelsCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .green
+        collectionView.backgroundColor = .clear
         return collectionView
     }()
     
@@ -67,7 +71,7 @@ final class LevelsView: UIView {
     }
     
     private func setupConstraints() {
-        let screenHeight = UIScreen.main.bounds.height
+        let screenHeight = DataConstraints.screenHeight
         let topOffset: CGFloat = 50
         let collectionViewHeight: CGFloat = 491 
         
@@ -125,7 +129,7 @@ final class LevelsView: UIView {
         if bottomSpaceNeeded > screenHeight {
             levelsCollectionView.snp.makeConstraints { make in
                 make.centerX.equalToSuperview()
-                make.bottom.equalToSuperview().inset(-20)
+                make.bottom.equalToSuperview().inset(5)
                 make.height.equalTo(collectionViewHeight)
                 make.width.equalTo(338)
             }

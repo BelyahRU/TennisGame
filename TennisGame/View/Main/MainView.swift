@@ -15,18 +15,24 @@ final class MainView: UIView {
     private let asteroid1: UIImageView = {
         let im = UIImageView()
         im.image = UIImage(named: Resources.AsteroidImages.asteroidImage1)
+        im.clipsToBounds = true
+        im.contentMode = .scaleAspectFit
         return im
     }()
     
     private let asteroid2: UIImageView = {
         let im = UIImageView()
         im.image = UIImage(named: Resources.AsteroidImages.asteroidImage2)
+        im.clipsToBounds = true
+        im.contentMode = .scaleAspectFit
         return im
     }()
     
     private let winTennisProLabel: UIImageView = {
         let im = UIImageView()
         im.image = UIImage(named: Resources.LabelImages.winTennisProLabel)
+        im.clipsToBounds = true
+        im.contentMode = .scaleAspectFit
         return im
     }()
     
@@ -73,26 +79,47 @@ final class MainView: UIView {
     }
     
     private func setupConstraints() {
+        if DataConstraints.screenHeight / 2 - 30 < 73 + 230 {
+            asteroid1.snp.makeConstraints { make in
+                make.size.equalTo(66)
+                make.top.equalToSuperview().offset(20)
+                make.leading.equalToSuperview().offset(19)
+            }
+            
+            asteroid2.snp.makeConstraints { make in
+                make.size.equalTo(66)
+                make.top.equalToSuperview().offset(247)
+                make.trailing.equalToSuperview().offset(-27)
+            }
+            
+            winTennisProLabel.snp.makeConstraints { make in
+                make.centerX.equalToSuperview()
+                make.top.equalToSuperview().offset(30)
+                make.height.equalTo(230)
+            }
+        } else {
+            asteroid1.snp.makeConstraints { make in
+                make.size.equalTo(66)
+                make.top.equalToSuperview().offset(81)
+                make.leading.equalToSuperview().offset(19)
+            }
+            
+            asteroid2.snp.makeConstraints { make in
+                make.size.equalTo(66)
+                make.top.equalToSuperview().offset(247)
+                make.trailing.equalToSuperview().offset(-27)
+            }
+            
+            winTennisProLabel.snp.makeConstraints { make in
+                make.centerX.equalToSuperview()
+                make.top.equalToSuperview().offset(73)
+                make.height.equalTo(230)
+            }
+        }
         mainBackground.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
         
-        asteroid1.snp.makeConstraints { make in
-            make.size.equalTo(66)
-            make.top.equalToSuperview().offset(81)
-            make.leading.equalToSuperview().offset(19)
-        }
-        
-        asteroid2.snp.makeConstraints { make in
-            make.size.equalTo(66)
-            make.top.equalToSuperview().offset(247)
-            make.trailing.equalToSuperview().offset(-27)
-        }
-        
-        winTennisProLabel.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.top.equalToSuperview().offset(73)
-        }
         
         gameStartButton.snp.makeConstraints { make in
             make.center.equalToSuperview()
@@ -113,6 +140,7 @@ final class MainView: UIView {
             make.height.equalTo(shopButton.snp.height)
             make.width.equalTo(shopButton.snp.width)
         }
+        
         
     }
 }
