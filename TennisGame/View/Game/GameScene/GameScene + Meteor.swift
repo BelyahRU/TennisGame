@@ -6,8 +6,8 @@ import SpriteKit
 //MARK: - Meteor
 extension GameScene {
     func spawnMeteor() {
-        let randomAsteroidType = Int.random(in: 1...2) //two types
-        var maxSize: CGFloat = 0 //it depends on random
+        let randomAsteroidType = Int.random(in: 1...2) // two types
+        var maxSize: CGFloat = 0 // depends on random
         
         var meteor: SKSpriteNode = setupMeteorSpriteNode(randomMeteorType: randomAsteroidType, maxSize: &maxSize)
         
@@ -20,10 +20,19 @@ extension GameScene {
         meteor.physicsBody?.restitution = 0
         meteor.physicsBody?.linearDamping = 0.5
         
-        meteor.position = CGPoint(x: CGFloat.random(in: 0...size.width), y: size.height + 200)
+        let minDistance: CGFloat = 30
+        var isValidPosition = false
+        var position = CGPoint.zero
         
+        while !isValidPosition {
+            position = CGPoint(x: CGFloat.random(in: 0...size.width), y: size.height + 200)
+            isValidPosition = isPositionValid(position, existingNodes: children.filter { $0.physicsBody?.categoryBitMask == meteorCategory || $0.physicsBody?.categoryBitMask == ballCategory }, minDistance: minDistance)
+        }
+        
+        meteor.position = position
         addChild(meteor)
     }
+
     
     func setupMeteorSpriteNode(randomMeteorType: Int, maxSize: inout CGFloat) -> SKSpriteNode {
         var meteor: SKSpriteNode

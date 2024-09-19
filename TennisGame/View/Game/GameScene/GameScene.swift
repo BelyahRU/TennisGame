@@ -66,12 +66,39 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(lifeLabel)
     }
     
+    func isPositionValid(_ position: CGPoint, existingNodes: [SKNode], minDistance: CGFloat) -> Bool {
+        for node in existingNodes {
+            let nodePosition = node.position
+            let nodeSize: CGFloat
+            if let spriteNode = node as? SKSpriteNode {
+                nodeSize = max(spriteNode.size.width, spriteNode.size.height)
+            } else {
+                nodeSize = 0
+            }
+            let distance = hypot(position.x - nodePosition.x, position.y - nodePosition.y)
+            if distance < minDistance + nodeSize / 2 {
+                return false
+            }
+        }
+        return true
+    }
+
     //MARK: - Circle spawn items
     
     func spawnBall() {
         let ballTexture = SKTexture(imageNamed: Resources.BallImages.tennisBall)
         let ball = SKSpriteNode(texture: ballTexture, size: CGSize(width: 60, height: 60))
-        ball.position = CGPoint(x: CGFloat.random(in: 0...size.width), y: size.height + 200)
+        
+        let minDistance: CGFloat = 30
+        var isValidPosition = false
+        var position = CGPoint.zero
+        
+        while !isValidPosition {
+            position = CGPoint(x: CGFloat.random(in: 0...size.width), y: size.height + 200)
+            isValidPosition = isPositionValid(position, existingNodes: children.filter { $0.physicsBody?.categoryBitMask == ballCategory || $0.physicsBody?.categoryBitMask == meteorCategory }, minDistance: minDistance)
+        }
+        
+        ball.position = position
         ball.physicsBody = SKPhysicsBody(circleOfRadius: ball.size.width / 2)
         ball.physicsBody?.categoryBitMask = ballCategory
         ball.physicsBody?.contactTestBitMask = racketCategory
@@ -82,6 +109,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         addChild(ball)
     }
+
     
     
     
