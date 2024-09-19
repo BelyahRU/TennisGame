@@ -11,8 +11,6 @@ extension MainViewController {
     }
 
     @objc func gameStartPressed() {
-        print("Game Start Button Pressed")
-            print("Coordinator: \(coordinator)")
         coordinator?.showGame()
     }
 }
