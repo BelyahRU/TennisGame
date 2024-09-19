@@ -6,10 +6,14 @@ enum Resources {
     
     enum ButtonImages {
         static let gameStartButton = "gameStartButton"
+        static let levelsButton = "levelsButton"
+        static let shopButton = "shopButton"
+        static let backButton = "backButton"
     }
     
     enum LabelImages {
         static let winTennisProLabel = "winTennisProLabel"
+        static let levelsLabel = "levelsLabel"
     }
     
     enum AsteroidImages {

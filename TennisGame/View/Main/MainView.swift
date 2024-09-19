@@ -3,7 +3,7 @@ import Foundation
 import UIKit
 import SnapKit
 
-class MainView: UIView {
+final class MainView: UIView {
     
     private let mainBackground: UIImageView = {
         let im = UIImageView()
@@ -36,6 +36,18 @@ class MainView: UIView {
         return button
     }()
     
+    public let levelsButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: Resources.ButtonImages.levelsButton), for: .normal)
+        return button
+    }()
+    
+    public let shopButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: Resources.ButtonImages.shopButton), for: .normal)
+        return button
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -56,6 +68,8 @@ class MainView: UIView {
         addSubview(asteroid2)
         addSubview(winTennisProLabel)
         addSubview(gameStartButton)
+        addSubview(levelsButton)
+        addSubview(shopButton)
     }
     
     private func setupConstraints() {
@@ -84,6 +98,20 @@ class MainView: UIView {
             make.center.equalToSuperview()
             make.width.equalTo(200)
             make.height.equalTo(60)
+        }
+        
+        shopButton.snp.makeConstraints { make in
+            make.bottom.equalToSuperview().inset(97)
+            make.width.equalTo(150)
+            make.height.equalTo(50)
+            make.centerX.equalToSuperview()
+        }
+        
+        levelsButton.snp.makeConstraints { make in
+            make.bottom.equalTo(shopButton.snp.top).offset(-42)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(shopButton.snp.height)
+            make.width.equalTo(shopButton.snp.width)
         }
         
     }

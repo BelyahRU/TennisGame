@@ -7,6 +7,7 @@ final class MainCoordinator: Coordinator {
     
     var mainViewController: MainViewController!
     var gameCoordinator: GameCoordinator!
+    var levelsCoordinator: LevelsCoordinator!
     
     init() {
         self.navigationController = UINavigationController()
@@ -22,12 +23,17 @@ final class MainCoordinator: Coordinator {
         mainViewController.coordinator = self  // назначаем координатор
         navigationController.pushViewController(mainViewController, animated: false)
     }
-
     
     public func showGame() {
         gameCoordinator = GameCoordinator()
         gameCoordinator.navigationController = navigationController
         gameCoordinator.start()
+    }
+    
+    public func showLevels() {
+        levelsCoordinator = LevelsCoordinator()
+        levelsCoordinator.navigationController = navigationController
+        levelsCoordinator.start()
     }
     
     

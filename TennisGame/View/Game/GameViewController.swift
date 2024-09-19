@@ -4,7 +4,7 @@ import UIKit
 import SpriteKit
 import SnapKit
 
-class GameViewController: UIViewController {
+final class GameViewController: UIViewController {
     
     weak var gameCoordinator: GameCoordinator!
     

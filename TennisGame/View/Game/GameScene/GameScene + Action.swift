@@ -11,7 +11,6 @@ extension GameScene {
         }
     }
 
-    
     func setupAction() {
         let spawnRandomItem = SKAction.run { self.spawnRandomItem() }
         

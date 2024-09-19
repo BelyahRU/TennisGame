@@ -2,12 +2,14 @@
 import UIKit
 import SnapKit
 
-class MainViewController: UIViewController {
+final class MainViewController: UIViewController {
     
     weak var coordinator: MainCoordinator!
     
     public var mainView = MainView()
     public var gameStartButton: UIButton!
+    public var levelsButton: UIButton!
+    public var shopButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()

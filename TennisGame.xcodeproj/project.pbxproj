@@ -23,6 +23,13 @@
 		1AAE11E62C9C346F00AF1F39 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE11E52C9C346F00AF1F39 /* GameScene.swift */; };
 		1AAE11E92C9C865E00AF1F39 /* GameScene + Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE11E82C9C865E00AF1F39 /* GameScene + Action.swift */; };
 		1AAE11EB2C9C86C900AF1F39 /* GameScene + Meteor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE11EA2C9C86C900AF1F39 /* GameScene + Meteor.swift */; };
+		1AAE11ED2C9CA95900AF1F39 /* GameScene + Ball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE11EC2C9CA95900AF1F39 /* GameScene + Ball.swift */; };
+		1AAE11F02C9CC5ED00AF1F39 /* LevelsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE11EF2C9CC5ED00AF1F39 /* LevelsView.swift */; };
+		1AAE11F22C9CC61800AF1F39 /* LevelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE11F12C9CC61800AF1F39 /* LevelsViewController.swift */; };
+		1AAE11F42C9CC82900AF1F39 /* LevelsVC + Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE11F32C9CC82900AF1F39 /* LevelsVC + Action.swift */; };
+		1AAE11F92C9CCAE900AF1F39 /* LevelsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE11F82C9CCAE900AF1F39 /* LevelsCoordinator.swift */; };
+		1AAE11FB2C9CCF5C00AF1F39 /* LevelsVC + CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE11FA2C9CCF5C00AF1F39 /* LevelsVC + CollectionView.swift */; };
+		1AAE11FD2C9CCFCE00AF1F39 /* LevelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE11FC2C9CCFCE00AF1F39 /* LevelCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +50,13 @@
 		1AAE11E52C9C346F00AF1F39 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		1AAE11E82C9C865E00AF1F39 /* GameScene + Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameScene + Action.swift"; sourceTree = "<group>"; };
 		1AAE11EA2C9C86C900AF1F39 /* GameScene + Meteor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameScene + Meteor.swift"; sourceTree = "<group>"; };
+		1AAE11EC2C9CA95900AF1F39 /* GameScene + Ball.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameScene + Ball.swift"; sourceTree = "<group>"; };
+		1AAE11EF2C9CC5ED00AF1F39 /* LevelsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelsView.swift; sourceTree = "<group>"; };
+		1AAE11F12C9CC61800AF1F39 /* LevelsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelsViewController.swift; sourceTree = "<group>"; };
+		1AAE11F32C9CC82900AF1F39 /* LevelsVC + Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LevelsVC + Action.swift"; sourceTree = "<group>"; };
+		1AAE11F82C9CCAE900AF1F39 /* LevelsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelsCoordinator.swift; sourceTree = "<group>"; };
+		1AAE11FA2C9CCF5C00AF1F39 /* LevelsVC + CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LevelsVC + CollectionView.swift"; sourceTree = "<group>"; };
+		1AAE11FC2C9CCFCE00AF1F39 /* LevelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +108,7 @@
 		1AAE11C22C9B433B00AF1F39 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1AAE11EE2C9CC5CC00AF1F39 /* Levels */,
 				1AAE11B62C9B40B900AF1F39 /* LaunchScreen.storyboard */,
 				1AAE11E22C9C344100AF1F39 /* Game */,
 				1AAE11C92C9B43FD00AF1F39 /* Main */,
@@ -142,6 +157,8 @@
 			isa = PBXGroup;
 			children = (
 				1AAE11CD2C9B85AA00AF1F39 /* MainCoordinator.swift */,
+				1AAE11F72C9CCACC00AF1F39 /* ShopCoordinator */,
+				1AAE11F62C9CCAC200AF1F39 /* LevelsCoordinator */,
 				1AAE11DF2C9B923700AF1F39 /* GameCoordinator */,
 			);
 			path = MainCoordinator;
@@ -180,8 +197,44 @@
 				1AAE11E52C9C346F00AF1F39 /* GameScene.swift */,
 				1AAE11E82C9C865E00AF1F39 /* GameScene + Action.swift */,
 				1AAE11EA2C9C86C900AF1F39 /* GameScene + Meteor.swift */,
+				1AAE11EC2C9CA95900AF1F39 /* GameScene + Ball.swift */,
 			);
 			path = GameScene;
+			sourceTree = "<group>";
+		};
+		1AAE11EE2C9CC5CC00AF1F39 /* Levels */ = {
+			isa = PBXGroup;
+			children = (
+				1AAE11FE2C9CCFD800AF1F39 /* CollectionView */,
+				1AAE11EF2C9CC5ED00AF1F39 /* LevelsView.swift */,
+				1AAE11F12C9CC61800AF1F39 /* LevelsViewController.swift */,
+				1AAE11F32C9CC82900AF1F39 /* LevelsVC + Action.swift */,
+			);
+			path = Levels;
+			sourceTree = "<group>";
+		};
+		1AAE11F62C9CCAC200AF1F39 /* LevelsCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				1AAE11F82C9CCAE900AF1F39 /* LevelsCoordinator.swift */,
+			);
+			path = LevelsCoordinator;
+			sourceTree = "<group>";
+		};
+		1AAE11F72C9CCACC00AF1F39 /* ShopCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ShopCoordinator;
+			sourceTree = "<group>";
+		};
+		1AAE11FE2C9CCFD800AF1F39 /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				1AAE11FC2C9CCFCE00AF1F39 /* LevelCell.swift */,
+				1AAE11FA2C9CCF5C00AF1F39 /* LevelsVC + CollectionView.swift */,
+			);
+			path = CollectionView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,7 +317,9 @@
 				1AAE11D62C9B8B4100AF1F39 /* MainView.swift in Sources */,
 				1AAE11D42C9B89E700AF1F39 /* Resources.swift in Sources */,
 				1AAE11E12C9B924B00AF1F39 /* GameCoordinator.swift in Sources */,
+				1AAE11F92C9CCAE900AF1F39 /* LevelsCoordinator.swift in Sources */,
 				1AAE11AC2C9B40B600AF1F39 /* AppDelegate.swift in Sources */,
+				1AAE11FB2C9CCF5C00AF1F39 /* LevelsVC + CollectionView.swift in Sources */,
 				1AAE11EB2C9C86C900AF1F39 /* GameScene + Meteor.swift in Sources */,
 				1AAE11E62C9C346F00AF1F39 /* GameScene.swift in Sources */,
 				1AAE11D02C9B867D00AF1F39 /* MainViewController.swift in Sources */,
@@ -273,6 +328,11 @@
 				1AAE11AE2C9B40B600AF1F39 /* SceneDelegate.swift in Sources */,
 				1AAE11E42C9C345A00AF1F39 /* GameViewController.swift in Sources */,
 				1AAE11DB2C9B908600AF1F39 /* MainVC + Action.swift in Sources */,
+				1AAE11F02C9CC5ED00AF1F39 /* LevelsView.swift in Sources */,
+				1AAE11ED2C9CA95900AF1F39 /* GameScene + Ball.swift in Sources */,
+				1AAE11F22C9CC61800AF1F39 /* LevelsViewController.swift in Sources */,
+				1AAE11FD2C9CCFCE00AF1F39 /* LevelCell.swift in Sources */,
+				1AAE11F42C9CC82900AF1F39 /* LevelsVC + Action.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
