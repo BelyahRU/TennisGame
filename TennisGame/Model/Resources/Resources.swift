@@ -21,4 +21,17 @@ enum Resources {
         static let mainBackgroundImage = "mainBackgroundImage"
     }
     
+    enum MeteorImages {
+        static let meteor1 = "meteor1"
+        static let meteor2 = "meteor2"
+    }
+    
+    enum RacketImages {
+        static let racketImage = "racketImage"
+    }
+    
+    enum BallImages {
+        static let tennisBall = "tennisBall"
+    }
+    
 }
