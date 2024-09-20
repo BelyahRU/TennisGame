@@ -17,7 +17,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func start() {
         coordinator = MainCoordinator()
         coordinator?.start()
-        window?.rootViewController = coordinator?.navigationController //main
+        window?.rootViewController = GameViewController()
+//        window?.rootViewController = coordinator?.navigationController //main
         window?.makeKeyAndVisible()
     }
 

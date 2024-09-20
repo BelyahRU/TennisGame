@@ -4,10 +4,14 @@ import UIKit
 
 final class LevelsViewController: UIViewController {
     
+    //MARK: Coordinator
     weak var levelsCoordinator: LevelsCoordinator!
     
-    public let levelsView = LevelsView()
+    //MARK: ViewModel
+    public var viewModel = LevelsViewModel()
     
+    //MARK: UI
+    public let levelsView = LevelsView()
     public var backButton: UIButton!
     
     override func viewDidLoad() {

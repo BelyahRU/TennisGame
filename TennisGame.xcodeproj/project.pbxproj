@@ -36,6 +36,7 @@
 		1AD8996D2C9CE85E00F9E65E /* LevelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD8996C2C9CE85E00F9E65E /* LevelManager.swift */; };
 		1AD899712C9D7C3600F9E65E /* LevelManager + levels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD899702C9D7C3600F9E65E /* LevelManager + levels.swift */; };
 		1AD899752C9DB62900F9E65E /* ScopeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD899742C9DB62900F9E65E /* ScopeManager.swift */; };
+		1AD899782C9DB71F00F9E65E /* LevelsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD899772C9DB71F00F9E65E /* LevelsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +70,7 @@
 		1AD8996C2C9CE85E00F9E65E /* LevelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelManager.swift; sourceTree = "<group>"; };
 		1AD899702C9D7C3600F9E65E /* LevelManager + levels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LevelManager + levels.swift"; sourceTree = "<group>"; };
 		1AD899742C9DB62900F9E65E /* ScopeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScopeManager.swift; sourceTree = "<group>"; };
+		1AD899772C9DB71F00F9E65E /* LevelsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 		1AAE11C12C9B433400AF1F39 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				1AD899772C9DB71F00F9E65E /* LevelsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -399,6 +402,7 @@
 				1AAE11E42C9C345A00AF1F39 /* GameViewController.swift in Sources */,
 				1AAE11DB2C9B908600AF1F39 /* MainVC + Action.swift in Sources */,
 				1AAE11F02C9CC5ED00AF1F39 /* LevelsView.swift in Sources */,
+				1AD899782C9DB71F00F9E65E /* LevelsViewModel.swift in Sources */,
 				1AAE11ED2C9CA95900AF1F39 /* GameScene + Ball.swift in Sources */,
 				1AAE11F22C9CC61800AF1F39 /* LevelsViewController.swift in Sources */,
 				1AAE11FD2C9CCFCE00AF1F39 /* LevelCell.swift in Sources */,
@@ -553,8 +557,7 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -581,8 +584,7 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

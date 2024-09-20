@@ -1,9 +1,9 @@
 
 import Foundation
 
-class LevelManager {
+final class LevelManager {
     
-    static let share = LevelManager()
+    static let shared = LevelManager()
     
     var levelsArray: [Level] = []
     
@@ -18,6 +18,7 @@ class LevelManager {
             levelsArray = savedLevels
         } else {
             getBaseLevels()
+            //save
         }
     }
     
@@ -25,31 +26,31 @@ class LevelManager {
     
     private func getBaseLevels() {
         levelsArray = [Level(num: 1,
-                             stars: 0,
+                             stars: 1,
                              isLocked: false),
                        Level(num: 2,
-                            stars: 0,
-                            isLocked: true),
+                            stars: 3,
+                            isLocked: false),
                        Level(num: 3,
-                             stars: 0,
-                             isLocked: true),
+                             stars: 3,
+                             isLocked: false),
                        Level(num: 4,
-                             stars: 0,
-                             isLocked: true),
+                             stars: 2,
+                             isLocked: false),
                        Level(num: 5,
-                             stars: 0,
-                             isLocked: true),
+                             stars: 3,
+                             isLocked: false),
                        Level(num: 6,
-                             stars: 0,
-                             isLocked: true),
+                             stars: 2,
+                             isLocked: false),
                        Level(num: 7,
-                             stars: 0,
-                             isLocked: true),
+                             stars: 1,
+                             isLocked: false),
                        Level(num: 8,
-                             stars: 0,
-                             isLocked: true),
+                             stars: 1,
+                             isLocked: false),
                        Level(num: 9,
                              stars: 0,
-                             isLocked: true)]
+                             isLocked: false)]
     }
 }

@@ -19,7 +19,11 @@ extension LevelsViewController: UICollectionViewDataSource, UICollectionViewDele
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LevelCell.reuseId, for: indexPath) as? LevelCell else {
                     return UICollectionViewCell()
                 }
-        cell.setupCell(number: indexPath.row + 1)
+        guard let level = viewModel.getLevel(by: indexPath.row + 1) else {
+            return UICollectionViewCell()
+        }
+
+        cell.setupCell(level: level)
         return cell
     }
     

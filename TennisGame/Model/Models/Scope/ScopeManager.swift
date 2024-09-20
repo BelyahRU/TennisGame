@@ -1,7 +1,7 @@
 
 import Foundation
 
-class ScopeManager {
+final class ScopeManager {
     
     static let shared = ScopeManager()
     

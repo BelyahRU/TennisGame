@@ -47,16 +47,25 @@ final class LevelCell: UICollectionViewCell {
 }
 
 extension LevelCell {
-    public func setupCell(number: Int) {
-        levelText.text = String(number)
-        if number == 1 {
-            levelImage.image = UIImage(named: Resources.LevelImages.levelOpened)
+    public func setupCell(level: Level) {
+        levelText.text = String(level.num)
+        
+        if !level.isLocked {
             levelText.textColor = .white
+            switch level.stars {
+            case 1:
+                levelImage.image = UIImage(named: Resources.LevelImages.levelPassed1Star)
+            case 2:
+                levelImage.image = UIImage(named: Resources.LevelImages.levelPassed2Star)
+            case 3:
+                levelImage.image = UIImage(named: Resources.LevelImages.levelPassed3Star)
+            default:
+                levelImage.image = UIImage(named: Resources.LevelImages.levelOpened)
+            }
         } else {
             levelImage.image = UIImage(named: Resources.LevelImages.levelBlocked)
             levelText.textColor = Resources.Colors.blockedLevelGrayText
         }
-        
         
     }
 }
