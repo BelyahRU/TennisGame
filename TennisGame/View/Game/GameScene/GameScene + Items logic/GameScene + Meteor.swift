@@ -76,7 +76,10 @@ extension GameScene {
         while !isValidPosition {
             position = CGPoint(x: CGFloat.random(in: 0...size.width), y: size.height + 200)
             isValidPosition = isPositionValid(position, existingNodes: children.filter {
-                $0.physicsBody?.categoryBitMask == meteorCategory || $0.physicsBody?.categoryBitMask == ballCategory
+                $0.physicsBody?.categoryBitMask == meteorCategory ||
+                $0.physicsBody?.categoryBitMask == ballCategory ||
+                $0.physicsBody?.categoryBitMask == shieldCategory ||
+                $0.physicsBody?.categoryBitMask == heartCategory
             }, minDistance: minDistance)
         }
         

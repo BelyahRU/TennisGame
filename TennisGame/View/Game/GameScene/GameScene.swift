@@ -3,23 +3,32 @@ import GameplayKit
 
 final class GameScene: SKScene, SKPhysicsContactDelegate {
     
+    //items
     var racket: SKSpriteNode!
     var racketNode: SKNode!
     var heart: SKSpriteNode!
+    var shield: SKSpriteNode!
 
+    //labels
     var scoreLabel: SKLabelNode!
     var lifeLabel: SKLabelNode!
+    
     var score = 0
     var lives = 3
+    var isInvincible = false
     
+    //bit category
     let racketCategory: UInt32 = 0x1 << 0
     let ballCategory: UInt32 = 0x1 << 1
     let meteorCategory: UInt32 = 0x1 << 2
     let heartCategory: UInt32 = 0x1 << 3
+    let shieldCategory: UInt32 = 0x1 << 4
     
+    //timer
     var timerLabel: SKLabelNode!
     var timer: Timer?
     var timeRemaining = 30
+    
     override func didMove(to view: SKView) {
         print(isPaused)
         configure()
@@ -27,6 +36,7 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func configure() {
         scheduleHeartSpawn(range: Double(10)..<Double(15))
+        scheduleShieldSpawn(range: Double(5)..<Double(10))
         createTimerLabel()
         startTimer()
         setupPhysics()

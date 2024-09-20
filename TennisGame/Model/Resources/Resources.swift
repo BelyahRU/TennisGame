@@ -30,8 +30,10 @@ enum Resources {
         static let meteor2 = "meteor2"
     }
     
-    enum HeartImage {
+    enum ItemImages {
         static let heart = "heartImage"
+        static let shield = "shieldImage"
+        static let star = "starImage"
     }
     
     enum RacketImages {

@@ -38,6 +38,7 @@
 		1AD899752C9DB62900F9E65E /* ScopeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD899742C9DB62900F9E65E /* ScopeManager.swift */; };
 		1AD899782C9DB71F00F9E65E /* LevelsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD899772C9DB71F00F9E65E /* LevelsViewModel.swift */; };
 		1AD8997A2C9DBE6A00F9E65E /* GameScene + Heart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD899792C9DBE6A00F9E65E /* GameScene + Heart.swift */; };
+		1AD8997C2C9DD35400F9E65E /* GameScene + Shield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD8997B2C9DD35300F9E65E /* GameScene + Shield.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +74,7 @@
 		1AD899742C9DB62900F9E65E /* ScopeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScopeManager.swift; sourceTree = "<group>"; };
 		1AD899772C9DB71F00F9E65E /* LevelsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelsViewModel.swift; sourceTree = "<group>"; };
 		1AD899792C9DBE6A00F9E65E /* GameScene + Heart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameScene + Heart.swift"; sourceTree = "<group>"; };
+		1AD8997B2C9DD35300F9E65E /* GameScene + Shield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameScene + Shield.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,11 +216,9 @@
 		1AAE11E72C9C864A00AF1F39 /* GameScene */ = {
 			isa = PBXGroup;
 			children = (
+				1AD8997D2C9DD7AA00F9E65E /* GameScene + Items logic */,
 				1AAE11E52C9C346F00AF1F39 /* GameScene.swift */,
 				1AAE11E82C9C865E00AF1F39 /* GameScene + Action.swift */,
-				1AAE11EA2C9C86C900AF1F39 /* GameScene + Meteor.swift */,
-				1AAE11EC2C9CA95900AF1F39 /* GameScene + Ball.swift */,
-				1AD899792C9DBE6A00F9E65E /* GameScene + Heart.swift */,
 			);
 			path = GameScene;
 			sourceTree = "<group>";
@@ -307,6 +307,17 @@
 				1AD8996A2C9CE81F00F9E65E /* Level.swift */,
 			);
 			path = DataModel;
+			sourceTree = "<group>";
+		};
+		1AD8997D2C9DD7AA00F9E65E /* GameScene + Items logic */ = {
+			isa = PBXGroup;
+			children = (
+				1AAE11EA2C9C86C900AF1F39 /* GameScene + Meteor.swift */,
+				1AAE11EC2C9CA95900AF1F39 /* GameScene + Ball.swift */,
+				1AD899792C9DBE6A00F9E65E /* GameScene + Heart.swift */,
+				1AD8997B2C9DD35300F9E65E /* GameScene + Shield.swift */,
+			);
+			path = "GameScene + Items logic";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -413,6 +424,7 @@
 				1AD899712C9D7C3600F9E65E /* LevelManager + levels.swift in Sources */,
 				1AD899752C9DB62900F9E65E /* ScopeManager.swift in Sources */,
 				1AAE11F42C9CC82900AF1F39 /* LevelsVC + Action.swift in Sources */,
+				1AD8997C2C9DD35400F9E65E /* GameScene + Shield.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
