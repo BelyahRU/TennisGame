@@ -5,16 +5,10 @@ class LevelManager {
     
     static let share = LevelManager()
     
-    private var totalScope: Int = 0
-    
-    
     var levelsArray: [Level] = []
-    
-                                      
     
     private init() {
         loadLevels()
-        loadScope()
     }
     
     
@@ -26,11 +20,6 @@ class LevelManager {
             getBaseLevels()
         }
     }
-    
-    private func loadScope() {
-        totalScope = UserDefaults.standard.integer(forKey: "totalScope")
-    }
-    
     
     
     

@@ -1,7 +1,20 @@
 
 import Foundation
 
-extension LevelManager {
+class ScopeManager {
+    
+    static let shared = ScopeManager()
+    
+    private var totalScope: Int = 0
+    
+    private init() {
+        loadScope()
+    }
+    
+    private func loadScope() {
+        totalScope = UserDefaults.standard.integer(forKey: "totalScope")
+    }
+    
     private func saveScope() {
         UserDefaults.standard.set(totalScope, forKey: "totalScope")
     }

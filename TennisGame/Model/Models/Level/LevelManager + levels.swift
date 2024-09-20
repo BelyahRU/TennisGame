@@ -24,6 +24,9 @@ extension LevelManager {
         }
     }
     
+    func getLastUnlockedLevel() -> Level? {
+        return levelsArray.filter { !$0.isLocked }.max(by: { $0.num < $1.num})
+    }
     
     private func markLevelAsCompleted(for number: Int) {
         if var level = level(for: number) {
@@ -46,10 +49,6 @@ extension LevelManager {
             nextLevel.isLocked = false
             updateLevelWithoutMarkingComplete(level: nextLevel)
         }
-    }
-    
-    func getLastUnlockedLevel() -> Level? {
-        return levelsArray.filter { !$0.isLocked }.max(by: { $0.num < $1.num})
     }
  
     private func saveLevels() {
