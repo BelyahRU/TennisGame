@@ -30,6 +30,10 @@ enum Resources {
         static let meteor2 = "meteor2"
     }
     
+    enum HeartImage {
+        static let heart = "heartImage"
+    }
+    
     enum RacketImages {
         static let racketImage = "racketImage"
     }

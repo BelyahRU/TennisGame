@@ -5,6 +5,7 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var racket: SKSpriteNode!
     var racketNode: SKNode!
+    var heart: SKSpriteNode!
 
     var scoreLabel: SKLabelNode!
     var lifeLabel: SKLabelNode!
@@ -14,16 +15,48 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
     let racketCategory: UInt32 = 0x1 << 0
     let ballCategory: UInt32 = 0x1 << 1
     let meteorCategory: UInt32 = 0x1 << 2
+    let heartCategory: UInt32 = 0x1 << 3
     
+    var timerLabel: SKLabelNode!
+    var timer: Timer?
+    var timeRemaining = 30
     override func didMove(to view: SKView) {
+        print(isPaused)
         configure()
     }
     
     func configure() {
+        scheduleHeartSpawn(range: Double(10)..<Double(15))
+        createTimerLabel()
+        startTimer()
         setupPhysics()
         createRacket()
         createLabels()
         setupAction()
+    }
+    
+    func createTimerLabel() {
+        timerLabel = SKLabelNode(fontNamed: "Arial")
+        timerLabel.fontSize = 24
+        timerLabel.fontColor = .white
+        timerLabel.position = CGPoint(x: size.width / 2, y: size.height - 100)
+        timerLabel.text = "Time: \(timeRemaining)"
+        addChild(timerLabel)
+    }
+        
+    func startTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+    }
+    
+    @objc func updateTimer() {
+        if timeRemaining > 0 {
+            timeRemaining -= 1
+            timerLabel.text = "Time: \(timeRemaining)"
+        } else {
+            timer?.invalidate()
+            gameOver()
+        }
+
     }
     
     func createRacket() {
