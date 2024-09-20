@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A3328C52C9E2E5F0013E0E0 /* GameScene + levels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3328C42C9E2E5F0013E0E0 /* GameScene + levels.swift */; };
 		1AAE11AC2C9B40B600AF1F39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE11AB2C9B40B600AF1F39 /* AppDelegate.swift */; };
 		1AAE11AE2C9B40B600AF1F39 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE11AD2C9B40B600AF1F39 /* SceneDelegate.swift */; };
 		1AAE11B52C9B40B900AF1F39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1AAE11B42C9B40B900AF1F39 /* Assets.xcassets */; };
@@ -44,6 +45,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1A3328C42C9E2E5F0013E0E0 /* GameScene + levels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameScene + levels.swift"; sourceTree = "<group>"; };
 		1AAE11A82C9B40B600AF1F39 /* TennisGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TennisGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AAE11AB2C9B40B600AF1F39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1AAE11AD2C9B40B600AF1F39 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 				1AD8997D2C9DD7AA00F9E65E /* GameScene + Items logic */,
 				1AAE11E52C9C346F00AF1F39 /* GameScene.swift */,
 				1AAE11E82C9C865E00AF1F39 /* GameScene + Action.swift */,
+				1A3328C42C9E2E5F0013E0E0 /* GameScene + levels.swift */,
 			);
 			path = GameScene;
 			sourceTree = "<group>";
@@ -429,6 +432,7 @@
 				1AAE11F22C9CC61800AF1F39 /* LevelsViewController.swift in Sources */,
 				1AAE11FD2C9CCFCE00AF1F39 /* LevelCell.swift in Sources */,
 				1AD899812C9DDBC200F9E65E /* GameSceneViewModel.swift in Sources */,
+				1A3328C52C9E2E5F0013E0E0 /* GameScene + levels.swift in Sources */,
 				1AD899712C9D7C3600F9E65E /* LevelManager + levels.swift in Sources */,
 				1AD899752C9DB62900F9E65E /* ScopeManager.swift in Sources */,
 				1AAE11F42C9CC82900AF1F39 /* LevelsVC + Action.swift in Sources */,

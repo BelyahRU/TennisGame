@@ -54,11 +54,12 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func setupGame(with level: Level) {
-        DispatchQueue.main.async {
-            self.scheduleHeartSpawn(range: Double(10)..<Double(15))
-            self.scheduleShieldSpawn(range: Double(5)..<Double(10))
-            self.scheduleStarSpawn(range: Double(15)..<Double(20))
-        }
+//        DispatchQueue.main.async {
+//            self.scheduleHeartSpawn(range: Double(10)..<Double(15))
+//            self.scheduleShieldSpawn(range: Double(5)..<Double(10))
+//            self.scheduleStarSpawn(range: Double(15)..<Double(20))
+//        }
+        
         createTimerLabel()
         startTimer()
     }

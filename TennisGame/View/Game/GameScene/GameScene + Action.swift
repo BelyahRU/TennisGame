@@ -12,23 +12,30 @@ extension GameScene {
     }
 
     func setupAction() {
-        let spawnRandomItem = SKAction.run { self.spawnRandomItem() }
+        let spawnRandomItem = SKAction.run { self.spawnRandomItemWith(meteorPersent: 0.9) }
         
         let wait = SKAction.wait(forDuration: Double(Int.random(in: 0...1))) //random time 0 to 1
         run(SKAction.repeatForever(SKAction.sequence([spawnRandomItem, wait])))
     }
     
-    func spawnRandomItem() {
-        let itemType = Int.random(in: 0...1) // 0 - meteor, 1 - ball, 2 - other
-        switch itemType {
-        case 0:
-            spawnMeteor()
-        case 1:
+    func spawnRandomItemWith(meteorPersent: Double) {
+        let itemType = Int.random(in: 0...99999999) // 0 - meteor, 1 - ball, 2 - other
+        print(itemType)
+        if Double(itemType) > meteorPersent * 99999999 {
             spawnBall()
-        default:
-            spawnOtherItem()
+        } else {
+            spawnMeteor()
         }
+//        switch itemType {
+//        case 0:
+//            spawnMeteor()
+//        case 1:
+//            spawnBall()
+//        default:
+//            spawnOtherItem()
+//        }
     }
+    
     func spawnOtherItem() {
         //ADD: - jther items
     }
