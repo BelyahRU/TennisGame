@@ -38,7 +38,8 @@ extension GameScene {
                 $0.physicsBody?.categoryBitMask == ballCategory ||
                 $0.physicsBody?.categoryBitMask == meteorCategory ||
                 $0.physicsBody?.categoryBitMask == shieldCategory ||
-                $0.physicsBody?.categoryBitMask == heartCategory
+                $0.physicsBody?.categoryBitMask == heartCategory ||
+                $0.physicsBody?.categoryBitMask == starCategory
             }, minDistance: minDistance)
         }
 

@@ -39,6 +39,7 @@
 		1AD899782C9DB71F00F9E65E /* LevelsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD899772C9DB71F00F9E65E /* LevelsViewModel.swift */; };
 		1AD8997A2C9DBE6A00F9E65E /* GameScene + Heart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD899792C9DBE6A00F9E65E /* GameScene + Heart.swift */; };
 		1AD8997C2C9DD35400F9E65E /* GameScene + Shield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD8997B2C9DD35300F9E65E /* GameScene + Shield.swift */; };
+		1AD8997F2C9DD7EE00F9E65E /* GameScene + Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD8997E2C9DD7EE00F9E65E /* GameScene + Star.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +76,7 @@
 		1AD899772C9DB71F00F9E65E /* LevelsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelsViewModel.swift; sourceTree = "<group>"; };
 		1AD899792C9DBE6A00F9E65E /* GameScene + Heart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameScene + Heart.swift"; sourceTree = "<group>"; };
 		1AD8997B2C9DD35300F9E65E /* GameScene + Shield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameScene + Shield.swift"; sourceTree = "<group>"; };
+		1AD8997E2C9DD7EE00F9E65E /* GameScene + Star.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameScene + Star.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -316,6 +318,7 @@
 				1AAE11EC2C9CA95900AF1F39 /* GameScene + Ball.swift */,
 				1AD899792C9DBE6A00F9E65E /* GameScene + Heart.swift */,
 				1AD8997B2C9DD35300F9E65E /* GameScene + Shield.swift */,
+				1AD8997E2C9DD7EE00F9E65E /* GameScene + Star.swift */,
 			);
 			path = "GameScene + Items logic";
 			sourceTree = "<group>";
@@ -403,6 +406,7 @@
 				1AAE11D42C9B89E700AF1F39 /* Resources.swift in Sources */,
 				1AAE11E12C9B924B00AF1F39 /* GameCoordinator.swift in Sources */,
 				1AAE11F92C9CCAE900AF1F39 /* LevelsCoordinator.swift in Sources */,
+				1AD8997F2C9DD7EE00F9E65E /* GameScene + Star.swift in Sources */,
 				1AAE11AC2C9B40B600AF1F39 /* AppDelegate.swift in Sources */,
 				1AAE11FB2C9CCF5C00AF1F39 /* LevelsVC + CollectionView.swift in Sources */,
 				1AAE11EB2C9C86C900AF1F39 /* GameScene + Meteor.swift in Sources */,

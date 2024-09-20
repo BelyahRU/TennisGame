@@ -8,6 +8,7 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
     var racketNode: SKNode!
     var heart: SKSpriteNode!
     var shield: SKSpriteNode!
+    var star: SKSpriteNode!
 
     //labels
     var scoreLabel: SKLabelNode!
@@ -23,6 +24,7 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
     let meteorCategory: UInt32 = 0x1 << 2
     let heartCategory: UInt32 = 0x1 << 3
     let shieldCategory: UInt32 = 0x1 << 4
+    let starCategory: UInt32 = 0x1 << 5
     
     //timer
     var timerLabel: SKLabelNode!
@@ -37,6 +39,7 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
     func configure() {
         scheduleHeartSpawn(range: Double(10)..<Double(15))
         scheduleShieldSpawn(range: Double(5)..<Double(10))
+        scheduleStarSpawn(range: Double(15)..<Double(20))
         createTimerLabel()
         startTimer()
         setupPhysics()

@@ -63,6 +63,11 @@ extension GameScene {
         else if collision == racketCategory | shieldCategory {
             shieldCollision(bodyA: bodyA, bodyB: bodyB)
         }
+        
+        else if collision == racketCategory | starCategory {
+            starCollision(bodyA: bodyA, bodyB: bodyB)
+        }
+        
     }
     
     func ballCollision(bodyA: SKPhysicsBody, bodyB: SKPhysicsBody) {
@@ -126,18 +131,23 @@ extension GameScene {
         }
     }
     
-    private func activateInvincibility(duration: TimeInterval) {
-        // Здесь вы можете изменить визуальные эффекты или состояние игрока, если нужно
-        isInvincible = true // Пример переменной состояния
-
-        // Запускаем таймер для отключения неуязвимости через 5 секунд
-        DispatchQueue.main.asyncAfter(deadline: .now() + duration) { [weak self] in
-            self?.isInvincible = false
-            // Возвращаем визуальные эффекты в норму, если были
+    private func starCollision(bodyA: SKPhysicsBody, bodyB: SKPhysicsBody) {
+        score += 50
+        scoreLabel.text = "Score: \(score)"
+        
+        if bodyA.categoryBitMask == starCategory {
+            bodyA.node?.removeFromParent()
+        } else {
+            bodyB.node?.removeFromParent()
         }
     }
+    
+    private func activateInvincibility(duration: TimeInterval) {
+        isInvincible = true
 
-
-
+        DispatchQueue.main.asyncAfter(deadline: .now() + duration) { [weak self] in
+            self?.isInvincible = false
+        }
+    }
 
 }

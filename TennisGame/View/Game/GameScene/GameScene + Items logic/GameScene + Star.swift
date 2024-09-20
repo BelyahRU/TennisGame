@@ -5,28 +5,28 @@ import SpriteKit
 
 extension GameScene {
     
-    func scheduleHeartSpawn(range: Range<Double>) {
+    func scheduleStarSpawn(range: Range<Double>) {
         let randomTime = Double.random(in: range)
         DispatchQueue.main.async {
             self.run(SKAction.sequence([
                 SKAction.wait(forDuration: randomTime),
                 SKAction.run { [weak self] in
-                    self?.spawnHeart()
+                    self?.spawnStar()
                 }
             ]))
         }
-        
-    }
-    func spawnHeart() {
-        let heartTexture = SKTexture(imageNamed: Resources.ItemImages.heart)
-        heart = SKSpriteNode(texture: heartTexture, size: CGSize(width: 75, height: 75))
-        
-        setupHeartPosition()
-        setupHeartPhysics()
-        addChild(heart)
     }
     
-    private func setupHeartPosition() {
+    private func spawnStar() {
+        let starTexture = SKTexture(imageNamed: Resources.ItemImages.star)
+        
+        star = SKSpriteNode(texture: starTexture, size: CGSize(width: 75, height: 75))
+        setupStarPosition()
+        setupStarPhysics()
+        addChild(star)
+    }
+    
+    private func setupStarPosition() {
         let minDistance: CGFloat = 30
         var isValidPosition = false
         
@@ -39,21 +39,21 @@ extension GameScene {
                 $0.physicsBody?.categoryBitMask == meteorCategory ||
                 $0.physicsBody?.categoryBitMask == shieldCategory ||
                 $0.physicsBody?.categoryBitMask == heartCategory ||
-                $0.physicsBody?.categoryBitMask == starCategory
+                $0.physicsBody?.categoryBitMask == starCategory 
             }, minDistance: minDistance)
         }
 
-        heart.position = position
+        star.position = position
     }
     
-    private func setupHeartPhysics() {
-        heart.physicsBody = SKPhysicsBody(circleOfRadius: heart.size.width / 2)
-        heart.physicsBody?.categoryBitMask = heartCategory
-        heart.physicsBody?.contactTestBitMask = racketCategory
-        heart.physicsBody?.affectedByGravity = true
-        heart.physicsBody?.collisionBitMask = 0
-        heart.physicsBody?.restitution = 0.5
-        heart.physicsBody?.linearDamping = 0.5
-//        heart.physicsBody?.applyImpulse(CGVector(dx: 0, dy: -10))?
+    private func setupStarPhysics() {
+        star.physicsBody = SKPhysicsBody(circleOfRadius: star.size.width / 2)
+        star.physicsBody?.categoryBitMask = starCategory
+        star.physicsBody?.contactTestBitMask = racketCategory
+        star.physicsBody?.affectedByGravity = true
+        star.physicsBody?.collisionBitMask = 0
+        star.physicsBody?.restitution = 0.5
+        star.physicsBody?.linearDamping = 0.5
+//        shield.physicsBody?.applyImpulse(CGVector(dx: 0, dy: -10))?
     }
 }
