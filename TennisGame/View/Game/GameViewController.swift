@@ -32,8 +32,10 @@ final class GameViewController: UIViewController {
         skView.layoutIfNeeded()
         let sceneSize = CGSize(width: skView.bounds.width, height: skView.bounds.height)
         scene = GameScene(size: sceneSize)
+        scene.currentLevel = 2
         scene.scaleMode = .resizeFill
 //        scene.gameSceneDelegate = self
+
         skView.presentScene(scene)
     }
 

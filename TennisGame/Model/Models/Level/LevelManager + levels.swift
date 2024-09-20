@@ -57,6 +57,9 @@ extension LevelManager {
         }
     }
     
+    func getLevelsCount() -> Int {
+        return levelsArray.count
+    }
     
     func getAllLevels() -> [Level] {
         return levelsArray

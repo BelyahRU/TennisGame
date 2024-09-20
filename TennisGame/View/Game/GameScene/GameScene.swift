@@ -2,6 +2,10 @@ import SpriteKit
 import GameplayKit
 
 final class GameScene: SKScene, SKPhysicsContactDelegate {
+    // levels
+    var currentLevel: Int = 0
+    var currentLevelParams: Level?
+    var countLevels: Int = 10
     
     //items
     var racket: SKSpriteNode!
@@ -31,17 +35,35 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
     var timer: Timer?
     var timeRemaining = 30
     
+    //viewModel
+    let viewModel = GameSceneViewModel()
+    
     override func didMove(to view: SKView) {
         print(isPaused)
         configure()
+        loadLevel(levelNumber: currentLevel)
+    }
+    
+    func loadLevel(levelNumber: Int) {
+        if levelNumber < viewModel.getCountLevels() && levelNumber > 0 {
+            currentLevelParams = viewModel.getLevel(by: levelNumber)
+            setupGame(with: currentLevelParams!)
+        } else {
+            print("Уровень не найден")
+        }
+    }
+    
+    func setupGame(with level: Level) {
+        DispatchQueue.main.async {
+            self.scheduleHeartSpawn(range: Double(10)..<Double(15))
+            self.scheduleShieldSpawn(range: Double(5)..<Double(10))
+            self.scheduleStarSpawn(range: Double(15)..<Double(20))
+        }
+        createTimerLabel()
+        startTimer()
     }
     
     func configure() {
-        scheduleHeartSpawn(range: Double(10)..<Double(15))
-        scheduleShieldSpawn(range: Double(5)..<Double(10))
-        scheduleStarSpawn(range: Double(15)..<Double(20))
-        createTimerLabel()
-        startTimer()
         setupPhysics()
         createRacket()
         createLabels()
