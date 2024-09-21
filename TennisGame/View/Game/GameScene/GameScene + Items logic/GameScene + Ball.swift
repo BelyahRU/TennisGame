@@ -4,14 +4,22 @@ import UIKit
 import SpriteKit
 
 extension GameScene {
-    func spawnBall() {
+    func spawnBall(speed: Int) {
         let ballTexture = SKTexture(imageNamed: Resources.BallImages.tennisBall)
         let ball = SKSpriteNode(texture: ballTexture, size: CGSize(width: 60, height: 60))
         
         setupBallPosition(for: ball)
         setupBallPhysics(for: ball)
-        
+        setupBallSpeed(with: speed, ball: ball)
         addChild(ball)
+    }
+    
+    //0 to 1300 - speed range
+    private func setupBallSpeed(with speed: Int, ball: SKSpriteNode ) {
+        //if speed == 0, then we use base speed
+        if speed != 0 {
+            ball.physicsBody?.velocity = CGVector(dx: 0, dy: -speed)
+        }
     }
     
     private func setupBallPhysics(for ball: SKSpriteNode) {

@@ -7,14 +7,21 @@ extension GameScene {
     
     func scheduleHeartSpawn(range: Range<Double>) {
         let randomTime = Double.random(in: range)
-        DispatchQueue.main.async {
+        DispatchQueue.main.asyncAfter(deadline: .now() + randomTime) {
             self.run(SKAction.sequence([
-                SKAction.wait(forDuration: randomTime),
                 SKAction.run { [weak self] in
                     self?.spawnHeart()
                 }
             ]))
         }
+//        DispatchQueue.main.async {
+//            self.run(SKAction.sequence([
+//                SKAction.wait(forDuration: randomTime),
+//                SKAction.run { [weak self] in
+//                    self?.spawnHeart()
+//                }
+//            ]))
+//        }
         
     }
     func spawnHeart() {
@@ -33,7 +40,7 @@ extension GameScene {
         var position = CGPoint.zero
         
         while !isValidPosition {
-            position = CGPoint(x: CGFloat.random(in: 0...size.width), y: size.height + 50)
+            position = CGPoint(x: CGFloat.random(in: 0...size.width), y: size.height + 10)
             isValidPosition = isPositionValid(position, existingNodes: children.filter {
                 $0.physicsBody?.categoryBitMask == ballCategory ||
                 $0.physicsBody?.categoryBitMask == meteorCategory ||
@@ -54,6 +61,7 @@ extension GameScene {
         heart.physicsBody?.collisionBitMask = 0
         heart.physicsBody?.restitution = 0.5
         heart.physicsBody?.linearDamping = 0.5
+        heart.physicsBody?.velocity = CGVector(dx: 0, dy: -600)
 //        heart.physicsBody?.applyImpulse(CGVector(dx: 0, dy: -10))?
     }
 }

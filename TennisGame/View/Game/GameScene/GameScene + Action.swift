@@ -4,6 +4,7 @@ import UIKit
 import SpriteKit
 //MARK: - Action
 extension GameScene {
+    
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
             let location = touch.location(in: self)
@@ -11,33 +12,18 @@ extension GameScene {
         }
     }
 
-    func setupAction() {
-        let spawnRandomItem = SKAction.run { self.spawnRandomItemWith(meteorPersent: 0.9) }
+    func setupMeteorBallSpawnWith(meteorPersent: Double, meteorSpeed: Int, ballSpeed: Int) {
+        let spawnRandomItem = SKAction.run {
+            let itemType = Int.random(in: 0...99999999)
+            if Double(itemType) > meteorPersent * 99999999 {
+                self.spawnBall(speed: ballSpeed)
+            } else {
+                self.spawnMeteor(speed: meteorSpeed)
+            }
+        }
         
         let wait = SKAction.wait(forDuration: Double(Int.random(in: 0...1))) //random time 0 to 1
         run(SKAction.repeatForever(SKAction.sequence([spawnRandomItem, wait])))
-    }
-    
-    func spawnRandomItemWith(meteorPersent: Double) {
-        let itemType = Int.random(in: 0...99999999) // 0 - meteor, 1 - ball, 2 - other
-        print(itemType)
-        if Double(itemType) > meteorPersent * 99999999 {
-            spawnBall()
-        } else {
-            spawnMeteor()
-        }
-//        switch itemType {
-//        case 0:
-//            spawnMeteor()
-//        case 1:
-//            spawnBall()
-//        default:
-//            spawnOtherItem()
-//        }
-    }
-    
-    func spawnOtherItem() {
-        //ADD: - jther items
     }
     
     func setupPhysics() {
@@ -46,7 +32,6 @@ extension GameScene {
         physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
         
     }
-    
     
     func didBegin(_ contact: SKPhysicsContact) {
         let bodyA = contact.bodyA
@@ -62,21 +47,22 @@ extension GameScene {
         else if collision == racketCategory | meteorCategory {
             meteorCollision(bodyA: bodyA, bodyB: bodyB)
         }
-        //+live
+        // +live
         else if collision == racketCategory | heartCategory {
             heartCollision(bodyA: bodyA, bodyB: bodyB)
         }
-        //invisible 5 sec.
+        // invisible 5 sec.
         else if collision == racketCategory | shieldCategory {
             shieldCollision(bodyA: bodyA, bodyB: bodyB)
         }
-        
+        // + 50 scope
         else if collision == racketCategory | starCategory {
             starCollision(bodyA: bodyA, bodyB: bodyB)
         }
         
     }
     
+    //MARK: Ball
     func ballCollision(bodyA: SKPhysicsBody, bodyB: SKPhysicsBody) {
         score += 1
         scoreLabel.text = "Score: \(score)"
@@ -87,6 +73,7 @@ extension GameScene {
         }
     }
     
+    //MARK: Meteor
     func meteorCollision(bodyA: SKPhysicsBody, bodyB: SKPhysicsBody) {
         guard !isInvincible else { return }
         let meteorBody: SKPhysicsBody
@@ -117,6 +104,7 @@ extension GameScene {
         meteorBody.allowsRotation = false
     }
     
+    //MARK: Heart
     func heartCollision(bodyA: SKPhysicsBody, bodyB: SKPhysicsBody) {
         lives += 1
         lifeLabel.text = "Lives: \(lives)"
@@ -128,6 +116,7 @@ extension GameScene {
         }
     }
     
+    //MARK: Shield/Invisible
     func shieldCollision(bodyA: SKPhysicsBody, bodyB: SKPhysicsBody) {
         activateInvincibility(duration: 5)
         
@@ -138,6 +127,7 @@ extension GameScene {
         }
     }
     
+    //MARK: Star
     private func starCollision(bodyA: SKPhysicsBody, bodyB: SKPhysicsBody) {
         score += 50
         scoreLabel.text = "Score: \(score)"
@@ -149,6 +139,7 @@ extension GameScene {
         }
     }
     
+    //MARK:
     private func activateInvincibility(duration: TimeInterval) {
         isInvincible = true
 

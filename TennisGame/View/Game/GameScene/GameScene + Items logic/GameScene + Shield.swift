@@ -54,6 +54,7 @@ extension GameScene {
         shield.physicsBody?.collisionBitMask = 0
         shield.physicsBody?.restitution = 0.5
         shield.physicsBody?.linearDamping = 0.5
+        shield.physicsBody?.velocity = CGVector(dx: 0, dy: -600)
 //        shield.physicsBody?.applyImpulse(CGVector(dx: 0, dy: -10))?
     }
 }

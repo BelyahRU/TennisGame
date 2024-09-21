@@ -5,13 +5,22 @@ import SpriteKit
 
 // MARK: - Meteor
 extension GameScene {
-    func spawnMeteor() {
+    func spawnMeteor(speed: Int) {
         let meteorType = getRandomMeteorType()
         let maxSize = getMaxSize(for: meteorType)
         
         let meteor = createMeteor(type: meteorType, maxSize: maxSize)
         setupMeteorPhysics(for: meteor)
         positionAndAddMeteor(meteor)
+        setupMeteorSpeed(with: speed, meteor: meteor)
+    }
+    
+    //0 to 1300 - speed range
+    private func setupMeteorSpeed(with speed: Int, meteor: SKSpriteNode) {
+        //if speed == 0, then we use base speed
+        if speed != 0 {
+            meteor.physicsBody?.velocity = CGVector(dx: 0, dy: -speed)
+        }
     }
     
     private func getRandomMeteorType() -> Int {
@@ -37,7 +46,7 @@ extension GameScene {
         case 2:
             meteor = SKSpriteNode(imageNamed: Resources.MeteorImages.meteor2)
         default:
-            meteor = SKSpriteNode() // Return an empty node if type is invalid
+            meteor = SKSpriteNode(imageNamed: Resources.MeteorImages.meteor1)
         }
         configureMeteorSize(meteor: &meteor, maxSize: maxSize)
         return meteor

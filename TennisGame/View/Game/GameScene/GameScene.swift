@@ -39,38 +39,55 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
     let viewModel = GameSceneViewModel()
     
     override func didMove(to view: SKView) {
-        print(isPaused)
-        configure()
         loadLevel(levelNumber: currentLevel)
+        configure()
+        self.startTimer(timerTime: 25)
+        createTimerLabel()
     }
     
     func loadLevel(levelNumber: Int) {
         if levelNumber < viewModel.getCountLevels() && levelNumber > 0 {
             currentLevelParams = viewModel.getLevel(by: levelNumber)
-            setupGame(with: currentLevelParams!)
+            setupLevel(for: currentLevelParams?.num ?? 1)
         } else {
             print("Уровень не найден")
         }
-    }
-    
-    func setupGame(with level: Level) {
-//        DispatchQueue.main.async {
-//            self.scheduleHeartSpawn(range: Double(10)..<Double(15))
-//            self.scheduleShieldSpawn(range: Double(5)..<Double(10))
-//            self.scheduleStarSpawn(range: Double(15)..<Double(20))
-//        }
-        
-        createTimerLabel()
-        startTimer()
     }
     
     func configure() {
         setupPhysics()
         createRacket()
         createLabels()
-        setupAction()
+    }
+     
+    //MARK: Timer
+    func startTimer(timerTime: Int) {
+        timeRemaining = timerTime
+        DispatchQueue.global().async { [weak self] in
+            self?.timer = Timer.scheduledTimer(timeInterval: 1, target: self as Any, selector: #selector(self?.updateTimer), userInfo: nil, repeats: true)
+
+            RunLoop.current.add((self?.timer!)!, forMode: .common)
+            RunLoop.current.run()
+            RunLoop.current.run(until: Date(timeIntervalSinceNow: 1))
+        }
+    }
+
+    @objc func updateTimer() {
+        if timeRemaining > 0 {
+            print(timeRemaining)
+            timeRemaining -= 1
+            DispatchQueue.main.async { [weak self] in
+                self?.timerLabel.text = "Time: \(self!.timeRemaining)"
+            }
+        } else {
+            timer?.invalidate()
+            DispatchQueue.main.async { [weak self] in
+                self?.gameOver()
+            }
+        }
     }
     
+    //MARK: UI
     func createTimerLabel() {
         timerLabel = SKLabelNode(fontNamed: "Arial")
         timerLabel.fontSize = 24
@@ -79,21 +96,7 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
         timerLabel.text = "Time: \(timeRemaining)"
         addChild(timerLabel)
     }
-        
-    func startTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
-    }
-    
-    @objc func updateTimer() {
-        if timeRemaining > 0 {
-            timeRemaining -= 1
-            timerLabel.text = "Time: \(timeRemaining)"
-        } else {
-            timer?.invalidate()
-            gameOver()
-        }
 
-    }
     
     func createRacket() {
         let racketTexture = SKTexture(imageNamed: Resources.RacketImages.racketImage)
@@ -135,6 +138,7 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(lifeLabel)
     }
     
+    //MARK: Position
     func isPositionValid(_ position: CGPoint, existingNodes: [SKNode], minDistance: CGFloat) -> Bool {
         for node in existingNodes {
             let nodePosition = node.position
