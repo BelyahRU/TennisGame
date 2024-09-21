@@ -11,18 +11,43 @@ extension GameScene {
             racket.position.x = location.x
         }
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else { return }
+        if let pauseButton = childNode(withName: "pauseButton") as? SKSpriteNode {
+            if pauseButton.contains(touch.location(in: self)) {
+                if isPaused {
+                    isPaused = false
+                    startTimer(timerTime: timeRemaining)
+                } else {
+                    isPaused = true
+                    timer?.invalidate()
+                }
+            }
+        }
+        if let restartButton = childNode(withName: "restartButton") as? SKSpriteNode {
+            if restartButton.contains(touch.location(in: self)) {
+                // Перезагрузка сцены
+                let scene = GameScene(size: size)
+                scene.scaleMode = .aspectFit
+                scene.currentLevel = currentLevel
+                view?.presentScene(scene)
+            }
+        }
+    }
 
-    func setupMeteorBallSpawnWith(meteorPersent: Double, meteorSpeed: Int, ballSpeed: Int) {
+
+    func setupMeteorBallSpawnWith(meteorPersent: Double, meteorSpeed: Int, ballSpeed: Int, duration: Range<Double>) {
         let spawnRandomItem = SKAction.run {
-            let itemType = Int.random(in: 0...99999999)
-            if Double(itemType) > meteorPersent * 99999999 {
+            let itemType = Int.random(in: 0...1)
+            if Double(itemType) > meteorPersent {
                 self.spawnBall(speed: ballSpeed)
             } else {
                 self.spawnMeteor(speed: meteorSpeed)
             }
         }
         
-        let wait = SKAction.wait(forDuration: Double(Int.random(in: 0...1))) //random time 0 to 1
+        let wait = SKAction.wait(forDuration: Double(Double.random(in: 0.8...1.5))) //random time 0 to 1
         run(SKAction.repeatForever(SKAction.sequence([spawnRandomItem, wait])))
     }
     

@@ -95,6 +95,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1AA373652C9F17F500504816 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		1AAE119F2C9B40B600AF1F39 = {
 			isa = PBXGroup;
 			children = (
@@ -223,6 +230,7 @@
 		1AAE11E72C9C864A00AF1F39 /* GameScene */ = {
 			isa = PBXGroup;
 			children = (
+				1AA373652C9F17F500504816 /* Views */,
 				1AD8997D2C9DD7AA00F9E65E /* GameScene + Items logic */,
 				1AAE11E52C9C346F00AF1F39 /* GameScene.swift */,
 				1AAE11E82C9C865E00AF1F39 /* GameScene + Action.swift */,

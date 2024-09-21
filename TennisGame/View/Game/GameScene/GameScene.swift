@@ -18,6 +18,10 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
     var scoreLabel: SKLabelNode!
     var lifeLabel: SKLabelNode!
     
+    //buttons
+    var pauseButton: SKSpriteNode!
+    var restartButton: SKSpriteNode!
+    
     var score = 0
     var lives = 3
     var isInvincible = false
@@ -58,17 +62,16 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
         setupPhysics()
         createRacket()
         createLabels()
+        createPauseButton()
+        createRestartButton()
     }
      
     //MARK: Timer
     func startTimer(timerTime: Int) {
+        print("timer started")
         timeRemaining = timerTime
-        DispatchQueue.global().async { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
             self?.timer = Timer.scheduledTimer(timeInterval: 1, target: self as Any, selector: #selector(self?.updateTimer), userInfo: nil, repeats: true)
-
-            RunLoop.current.add((self?.timer!)!, forMode: .common)
-            RunLoop.current.run()
-            RunLoop.current.run(until: Date(timeIntervalSinceNow: 1))
         }
     }
 
@@ -89,6 +92,7 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
     
     //MARK: UI
     func createTimerLabel() {
+        print("timer created")
         timerLabel = SKLabelNode(fontNamed: "Arial")
         timerLabel.fontSize = 24
         timerLabel.fontColor = .white
@@ -96,9 +100,33 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
         timerLabel.text = "Time: \(timeRemaining)"
         addChild(timerLabel)
     }
+    
+    func createPauseButton() {
+        print("created pauseButton")
+        let pauseButtonTexture = SKTexture(imageNamed: Resources.ButtonImages.pauseButton)
+        pauseButton = SKSpriteNode(texture: pauseButtonTexture, size: CGSize(width: 60, height: 60))
+        
+        pauseButton.position = CGPoint(x: 50, y: size.height - 64)
+        pauseButton.name = "pauseButton"
+        
+        addChild(pauseButton)
+    }
+    
+    func createRestartButton() {
+        print("created restartButton")
+        let restartButtonTexture = SKTexture(imageNamed: Resources.ButtonImages.restartButton)
+        restartButton = SKSpriteNode(texture: restartButtonTexture, size: CGSize(width: 60, height: 60))
+        
+        restartButton.position = CGPoint(x: size.width-50, y: size.height - 64)
+        restartButton.name = "restartButton"
+        
+        addChild(restartButton)
+    }
+
 
     
     func createRacket() {
+        print("created racket")
         let racketTexture = SKTexture(imageNamed: Resources.RacketImages.racketImage)
         let racketWidth = size.width * 0.58
         let racketHeight = racketWidth * (racketTexture.size().height / racketTexture.size().width)
@@ -123,6 +151,7 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
 
     
     func createLabels() {
+        print("created labels")
         scoreLabel = SKLabelNode(fontNamed: "Arial")
         scoreLabel.fontSize = 24
         scoreLabel.fontColor = .white
@@ -140,6 +169,8 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
     
     //MARK: Position
     func isPositionValid(_ position: CGPoint, existingNodes: [SKNode], minDistance: CGFloat) -> Bool {
+        print("position validation")
+        print(position, existingNodes.map{$0.position}, minDistance)
         for node in existingNodes {
             let nodePosition = node.position
             let nodeSize: CGFloat
@@ -150,15 +181,18 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             let distance = hypot(position.x - nodePosition.x, position.y - nodePosition.y)
             if distance < minDistance + nodeSize / 2 {
+                print(false)
                 return false
             }
         }
+        print(true)
         return true
     }
 
     
     // MARK: - Game over
     func gameOver() {
+        print("gameOver")
         let gameOverLabel = SKLabelNode(fontNamed: "Arial")
         gameOverLabel.text = "Game Over"
         gameOverLabel.fontSize = 48

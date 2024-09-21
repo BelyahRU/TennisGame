@@ -9,6 +9,8 @@ enum Resources {
         static let levelsButton = "levelsButton"
         static let shopButton = "shopButton"
         static let backButton = "backButton"
+        static let pauseButton = "pauseButton"
+        static let restartButton = "restartButton"
     }
     
     enum LabelImages {

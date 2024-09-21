@@ -79,21 +79,36 @@ extension GameScene {
     
     private func positionAndAddMeteor(_ meteor: SKSpriteNode) {
         let minDistance: CGFloat = 30
-        var isValidPosition = false
-        var position = CGPoint.zero
-        
-        while !isValidPosition {
-            position = CGPoint(x: CGFloat.random(in: 0...size.width), y: size.height + 200)
-            isValidPosition = isPositionValid(position, existingNodes: children.filter {
-                $0.physicsBody?.categoryBitMask == ballCategory ||
-                $0.physicsBody?.categoryBitMask == meteorCategory ||
-                $0.physicsBody?.categoryBitMask == shieldCategory ||
-                $0.physicsBody?.categoryBitMask == heartCategory ||
-                $0.physicsBody?.categoryBitMask == starCategory
-            }, minDistance: minDistance)
+        let existingNodes = children.filter {
+            $0.physicsBody?.categoryBitMask == ballCategory ||
+            $0.physicsBody?.categoryBitMask == meteorCategory ||
+            $0.physicsBody?.categoryBitMask == shieldCategory ||
+            $0.physicsBody?.categoryBitMask == heartCategory ||
+            $0.physicsBody?.categoryBitMask == starCategory
         }
-        
-        meteor.position = position
-        addChild(meteor)
+
+        // Выполняем проверку в отдельном потоке
+        DispatchQueue.global().async { [weak self] in
+            print("setupMeteor")
+            var isValidPosition = false
+            var position = CGPoint.zero
+
+            while !isValidPosition {
+                let sizeW = self!.size.width
+                let sizeH = self!.size.height
+                position = CGPoint(x: CGFloat.random(in: 0.0...sizeW), y: sizeH - 200)
+                isValidPosition = self?.isPositionValid(position, existingNodes: existingNodes, minDistance: minDistance) ?? false
+
+                print("after")
+            }
+
+            // Обновляем позицию и добавляем метеорит в основном потоке
+            DispatchQueue.main.async {
+                meteor.position = position
+                self?.addChild(meteor)
+            }
+        }
     }
+
+    
 }
