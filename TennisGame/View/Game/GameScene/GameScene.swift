@@ -27,9 +27,6 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
     var lives = 3
     var isInvincible = false
     
-    //buttons
-    var pauseButton: SKSpriteNode!
-    var restartButton: SKSpriteNode!
     
     //bit category
     let racketCategory: UInt32 = 0x1 << 0
@@ -154,27 +151,6 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(racket)
     }
     
-    func createPauseButton() {
-        print("created pauseButton")
-        let pauseButtonTexture = SKTexture(imageNamed: Resources.ButtonImages.pauseButton)
-        pauseButton = SKSpriteNode(texture: pauseButtonTexture, size: CGSize(width: 60, height: 60))
-        
-        pauseButton.position = CGPoint(x: 50, y: size.height - 64)
-        pauseButton.name = "pauseButton"
-        
-        addChild(pauseButton)
-    }
-        
-    func createRestartButton() {
-        print("created restartButton")
-        let restartButtonTexture = SKTexture(imageNamed: Resources.ButtonImages.restartButton)
-        restartButton = SKSpriteNode(texture: restartButtonTexture, size: CGSize(width: 60, height: 60))
-        
-        restartButton.position = CGPoint(x: size.width-50, y: size.height - 64)
-        restartButton.name = "restartButton"
-        
-        addChild(restartButton)
-    }
 
     
     func createLabels() {

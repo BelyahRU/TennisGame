@@ -1,0 +1,6 @@
+framework module Pods_TennisGame {
+  umbrella header "Pods-TennisGame-umbrella.h"
+
+  export *
+  module * { export * }
+}

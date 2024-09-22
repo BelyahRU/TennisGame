@@ -94,9 +94,9 @@
             filePath = "TennisGame/View/Game/GameScene/GameScene.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "198"
-            endingLineNumber = "198"
-            landmarkName = "gameOver()"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
+            landmarkName = "isPositionValid(_:existingNodes:minDistance:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -142,8 +142,8 @@
             filePath = "TennisGame/View/Game/GameScene/GameScene.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
             landmarkName = "updateTimer()"
             landmarkType = "7">
          </BreakpointContent>
