@@ -13,28 +13,28 @@ extension GameScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let touch = touches.first else { return }
-        if let pauseButton = childNode(withName: "pauseButton") as? SKSpriteNode {
-            if pauseButton.contains(touch.location(in: self)) {
-                if isPaused {
-                    isPaused = false
-                    startTimer(timerTime: timeRemaining)
-                } else {
-                    isPaused = true
-                    timer?.invalidate()
+            guard let touch = touches.first else { return }
+            if let pauseButton = childNode(withName: "pauseButton") as? SKSpriteNode {
+                if pauseButton.contains(touch.location(in: self)) {
+                    if isPaused {
+                        isPaused = false
+                        startTimer(timerTime: timeRemaining)
+                    } else {
+                        isPaused = true
+                        timer?.invalidate()
+                    }
+                }
+            }
+            if let restartButton = childNode(withName: "restartButton") as? SKSpriteNode {
+                if restartButton.contains(touch.location(in: self)) {
+                    // Перезагрузка сцены
+                    let scene = GameScene(size: size)
+                    scene.scaleMode = .aspectFit
+                    scene.currentLevel = currentLevel
+                    view?.presentScene(scene)
                 }
             }
         }
-        if let restartButton = childNode(withName: "restartButton") as? SKSpriteNode {
-            if restartButton.contains(touch.location(in: self)) {
-                // Перезагрузка сцены
-                let scene = GameScene(size: size)
-                scene.scaleMode = .aspectFit
-                scene.currentLevel = currentLevel
-                view?.presentScene(scene)
-            }
-        }
-    }
 
 
     func setupMeteorBallSpawnWith(meteorPersent: Double, meteorSpeed: Int, ballSpeed: Int, duration: Range<Double>) {

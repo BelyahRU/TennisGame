@@ -49,12 +49,12 @@ extension GameScene {
         //            self.scheduleShieldSpawn(range: Double(5)..<Double(10))
         //            self.scheduleStarSpawn(range: Double(15)..<Double(20))
         //        }
-        setupMeteorBallSpawnWith(meteorPersent: 0.5, meteorSpeed: 0, ballSpeed: 0)
+        setupMeteorBallSpawnWith(meteorPersent: 0.5, meteorSpeed: 0, ballSpeed: 0, duration: Double(1.2)..<Double(2))
     }
     
     //2
     func setupSecondLevel() {
-        setupMeteorBallSpawnWith(meteorPersent: 0.4, meteorSpeed: 400, ballSpeed: 1300)
+            setupMeteorBallSpawnWith(meteorPersent: 0.4, meteorSpeed: 400, ballSpeed:0, duration: Double(1.2)..<Double(2))
 //        self.scheduleHeartSpawn(range: Double(0)..<Double(5))
     }
     

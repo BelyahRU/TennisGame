@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1A3328C52C9E2E5F0013E0E0 /* GameScene + levels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3328C42C9E2E5F0013E0E0 /* GameScene + levels.swift */; };
+		1A3A08B22C9F3E4400F155A2 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1A3A08B12C9F3E4400F155A2 /* SnapKit */; };
 		1AAE11AC2C9B40B600AF1F39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE11AB2C9B40B600AF1F39 /* AppDelegate.swift */; };
 		1AAE11AE2C9B40B600AF1F39 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE11AD2C9B40B600AF1F39 /* SceneDelegate.swift */; };
 		1AAE11B52C9B40B900AF1F39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1AAE11B42C9B40B900AF1F39 /* Assets.xcassets */; };
@@ -17,7 +18,6 @@
 		1AAE11D02C9B867D00AF1F39 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE11CF2C9B867D00AF1F39 /* MainViewController.swift */; };
 		1AAE11D42C9B89E700AF1F39 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE11D32C9B89E700AF1F39 /* Resources.swift */; };
 		1AAE11D62C9B8B4100AF1F39 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE11D52C9B8B4100AF1F39 /* MainView.swift */; };
-		1AAE11D92C9B8D6F00AF1F39 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1AAE11D82C9B8D6F00AF1F39 /* SnapKit */; };
 		1AAE11DB2C9B908600AF1F39 /* MainVC + Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE11DA2C9B908600AF1F39 /* MainVC + Action.swift */; };
 		1AAE11E12C9B924B00AF1F39 /* GameCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE11E02C9B924B00AF1F39 /* GameCoordinator.swift */; };
 		1AAE11E42C9C345A00AF1F39 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE11E32C9C345A00AF1F39 /* GameViewController.swift */; };
@@ -88,7 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1AAE11D92C9B8D6F00AF1F39 /* SnapKit in Frameworks */,
+				1A3A08B22C9F3E4400F155A2 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,7 +354,7 @@
 			);
 			name = TennisGame;
 			packageProductDependencies = (
-				1AAE11D82C9B8D6F00AF1F39 /* SnapKit */,
+				1A3A08B12C9F3E4400F155A2 /* SnapKit */,
 			);
 			productName = TennisGame;
 			productReference = 1AAE11A82C9B40B600AF1F39 /* TennisGame.app */;
@@ -385,7 +385,7 @@
 			);
 			mainGroup = 1AAE119F2C9B40B600AF1F39;
 			packageReferences = (
-				1AAE11D72C9B8D6F00AF1F39 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				1A3A08B02C9F3E4400F155A2 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 1AAE11A92C9B40B600AF1F39 /* Products */;
 			projectDirPath = "";
@@ -659,7 +659,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		1AAE11D72C9B8D6F00AF1F39 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+		1A3A08B02C9F3E4400F155A2 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
 			requirement = {
@@ -670,9 +670,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		1AAE11D82C9B8D6F00AF1F39 /* SnapKit */ = {
+		1A3A08B12C9F3E4400F155A2 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1AAE11D72C9B8D6F00AF1F39 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			package = 1A3A08B02C9F3E4400F155A2 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
