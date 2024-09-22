@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1A3328C52C9E2E5F0013E0E0 /* GameScene + levels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3328C42C9E2E5F0013E0E0 /* GameScene + levels.swift */; };
+		1A4768482CA0BF33004BD6BB /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1A4768472CA0BF33004BD6BB /* SnapKit */; };
 		1AAE11AC2C9B40B600AF1F39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE11AB2C9B40B600AF1F39 /* AppDelegate.swift */; };
 		1AAE11AE2C9B40B600AF1F39 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE11AD2C9B40B600AF1F39 /* SceneDelegate.swift */; };
 		1AAE11B52C9B40B900AF1F39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1AAE11B42C9B40B900AF1F39 /* Assets.xcassets */; };
@@ -41,7 +42,6 @@
 		1AD8997C2C9DD35400F9E65E /* GameScene + Shield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD8997B2C9DD35300F9E65E /* GameScene + Shield.swift */; };
 		1AD8997F2C9DD7EE00F9E65E /* GameScene + Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD8997E2C9DD7EE00F9E65E /* GameScene + Star.swift */; };
 		1AD899812C9DDBC200F9E65E /* GameSceneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD899802C9DDBC200F9E65E /* GameSceneViewModel.swift */; };
-		22C4CF1BFB4102225BBACEBD /* Pods_TennisGame.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CF88850A813BA5F9625C9BA /* Pods_TennisGame.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,9 +81,6 @@
 		1AD8997B2C9DD35300F9E65E /* GameScene + Shield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameScene + Shield.swift"; sourceTree = "<group>"; };
 		1AD8997E2C9DD7EE00F9E65E /* GameScene + Star.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameScene + Star.swift"; sourceTree = "<group>"; };
 		1AD899802C9DDBC200F9E65E /* GameSceneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSceneViewModel.swift; sourceTree = "<group>"; };
-		25FC81535955B7446256AC4E /* Pods-TennisGame.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TennisGame.release.xcconfig"; path = "Target Support Files/Pods-TennisGame/Pods-TennisGame.release.xcconfig"; sourceTree = "<group>"; };
-		4CF88850A813BA5F9625C9BA /* Pods_TennisGame.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TennisGame.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E9E7AF3BC41A4C7B0830CB32 /* Pods-TennisGame.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TennisGame.debug.xcconfig"; path = "Target Support Files/Pods-TennisGame/Pods-TennisGame.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,21 +88,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22C4CF1BFB4102225BBACEBD /* Pods_TennisGame.framework in Frameworks */,
+				1A4768482CA0BF33004BD6BB /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		10362D8DE87FF6CC625BFDE7 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				4CF88850A813BA5F9625C9BA /* Pods_TennisGame.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		1AA373652C9F17F500504816 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -118,8 +107,6 @@
 			children = (
 				1AAE11AA2C9B40B600AF1F39 /* TennisGame */,
 				1AAE11A92C9B40B600AF1F39 /* Products */,
-				9EF6F4C04E8B3749C36A8163 /* Pods */,
-				10362D8DE87FF6CC625BFDE7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -350,16 +337,6 @@
 			path = "GameScene + Items logic";
 			sourceTree = "<group>";
 		};
-		9EF6F4C04E8B3749C36A8163 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				E9E7AF3BC41A4C7B0830CB32 /* Pods-TennisGame.debug.xcconfig */,
-				25FC81535955B7446256AC4E /* Pods-TennisGame.release.xcconfig */,
-			);
-			name = Pods;
-			path = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -367,17 +344,18 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1AAE11BC2C9B40B900AF1F39 /* Build configuration list for PBXNativeTarget "TennisGame" */;
 			buildPhases = (
-				30E3097ADDC09E28FF120B75 /* [CP] Check Pods Manifest.lock */,
 				1AAE11A42C9B40B600AF1F39 /* Sources */,
 				1AAE11A52C9B40B600AF1F39 /* Frameworks */,
 				1AAE11A62C9B40B600AF1F39 /* Resources */,
-				D3E418A8A779853D6EB6C0FC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = TennisGame;
+			packageProductDependencies = (
+				1A4768472CA0BF33004BD6BB /* SnapKit */,
+			);
 			productName = TennisGame;
 			productReference = 1AAE11A82C9B40B600AF1F39 /* TennisGame.app */;
 			productType = "com.apple.product-type.application";
@@ -406,6 +384,9 @@
 				Base,
 			);
 			mainGroup = 1AAE119F2C9B40B600AF1F39;
+			packageReferences = (
+				1A4768462CA0BF33004BD6BB /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 1AAE11A92C9B40B600AF1F39 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -427,48 +408,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		30E3097ADDC09E28FF120B75 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-TennisGame-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D3E418A8A779853D6EB6C0FC /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TennisGame/Pods-TennisGame-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TennisGame/Pods-TennisGame-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TennisGame/Pods-TennisGame-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1AAE11A42C9B40B600AF1F39 /* Sources */ = {
@@ -644,7 +583,6 @@
 		};
 		1AAE11BD2C9B40B900AF1F39 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E9E7AF3BC41A4C7B0830CB32 /* Pods-TennisGame.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -672,7 +610,6 @@
 		};
 		1AAE11BE2C9B40B900AF1F39 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 25FC81535955B7446256AC4E /* Pods-TennisGame.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -720,6 +657,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1A4768462CA0BF33004BD6BB /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1A4768472CA0BF33004BD6BB /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1A4768462CA0BF33004BD6BB /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1AAE11A02C9B40B600AF1F39 /* Project object */;
 }
