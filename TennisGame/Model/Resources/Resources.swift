@@ -36,6 +36,13 @@ enum Resources {
         static let heart = "heartImage"
         static let shield = "shieldImage"
         static let star = "starImage"
+        static let clockImage = "clockImage"
+        static let x0Heart = "x0Heart"
+        static let x1Heart = "x1Heart"
+        static let x2Heart = "x2Heart"
+        static let x3Heart = "x3Heart"
+        static let x4Heart = "x4Heart"
+        static let x5Heart = "x5Heart"
     }
     
     enum RacketImages {
@@ -56,7 +63,7 @@ enum Resources {
     
     enum Colors {
         static let blockedLevelGrayText = UIColor(red: 136/255, green: 136/255, blue: 136/255, alpha: 1.0)
-
+        static let purpleTextColor = UIColor(red: 0x7F/255.0, green: 0x2A/255.0, blue: 0xEF/255.0, alpha: 1.0)
     }
     
 }

@@ -114,6 +114,7 @@ extension GameScene {
         
         lives -= 1
         lifeLabel.text = "Lives: \(lives)"
+        heartImage.texture = getHeartTexture(lives: lives)
         
         meteorBody.node?.removeFromParent()
         

@@ -14,10 +14,15 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
     var heart: SKSpriteNode!
     var shield: SKSpriteNode!
     var star: SKSpriteNode!
-
+    
+    var clockImage: SKSpriteNode!
+    var heartImage: SKSpriteNode!
+    
     //labels
     var scoreLabel: SKLabelNode!
     var lifeLabel: SKLabelNode!
+    
+    
     
     //buttons
     var pauseButton: SKSpriteNode!
@@ -39,7 +44,7 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
     //timer
     var timerLabel: SKLabelNode!
     var timer: Timer?
-    var timeRemaining = 30
+    var timeRemaining = 0
     
     //viewModel
     let viewModel = GameSceneViewModel()
@@ -47,7 +52,8 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didMove(to view: SKView) {
         loadLevel(levelNumber: currentLevel)
         configure()
-        self.startTimer(timerTime: 25)
+        startTimer(timerTime: 245)
+        createClockImage()
         createTimerLabel()
     }
     
@@ -66,40 +72,44 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
         createLabels()
         createPauseButton()
         createRestartButton()
+        createHeartImage()
+        //
     }
-     
+    
     //MARK: Timer
     func startTimer(timerTime: Int) {
         print("timer started")
         timeRemaining = timerTime
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
-            self?.timer = Timer.scheduledTimer(timeInterval: 1, target: self as Any, selector: #selector(self?.updateTimer), userInfo: nil, repeats: true)
-        }
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+        
     }
-
+    
     @objc func updateTimer() {
         if timeRemaining > 0 {
-            print(timeRemaining)
             timeRemaining -= 1
-            DispatchQueue.main.async { [weak self] in
-                self?.timerLabel.text = "Time: \(self!.timeRemaining)"
+            if timeRemaining >= 60 {
+                let minutes = timeRemaining / 60
+                let seconds = timeRemaining % 60
+                timerLabel.text = String(format: "%02d:%02d", minutes, seconds)
+            } else {
+                timerLabel.text = "\(timeRemaining)"
             }
+            
         } else {
             timer?.invalidate()
-            DispatchQueue.main.async { [weak self] in
-                self?.gameOver()
-            }
+            gameOver()
         }
     }
     
     //MARK: UI
     func createTimerLabel() {
-        print("timer created")
-        timerLabel = SKLabelNode(fontNamed: "Arial")
-        timerLabel.fontSize = 24
-        timerLabel.fontColor = .white
-        timerLabel.position = CGPoint(x: size.width / 2, y: size.height - 100)
-        timerLabel.text = "Time: \(timeRemaining)"
+        print("timerLabel created")
+        timerLabel = SKLabelNode(fontNamed: "BULGOGI")
+        timerLabel.fontSize = 17
+        timerLabel.fontColor = Resources.Colors.purpleTextColor
+        timerLabel.position = CGPoint(x: size.width / 2, y: clockImage.position.y - 7)
+        timerLabel.text = "\(timeRemaining)"
+        timerLabel.zPosition = 2
         addChild(timerLabel)
     }
     
@@ -124,8 +134,8 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
         
         addChild(restartButton)
     }
-
-
+    
+    
     
     func createRacket() {
         print("created racket")
@@ -151,29 +161,67 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(racket)
     }
     
-
+    
     
     func createLabels() {
         print("created labels")
         scoreLabel = SKLabelNode(fontNamed: "Arial")
         scoreLabel.fontSize = 24
         scoreLabel.fontColor = .white
-        scoreLabel.position = CGPoint(x: size.width / 2, y: size.height - 50)
+        scoreLabel.position = CGPoint(x: size.width / 2, y: size.height - 200)
         scoreLabel.text = "Score: \(score)"
         addChild(scoreLabel)
         
         lifeLabel = SKLabelNode(fontNamed: "Arial")
         lifeLabel.fontSize = 24
         lifeLabel.fontColor = .white
-        lifeLabel.position = CGPoint(x: size.width - 100, y: size.height - 50)
+        lifeLabel.position = CGPoint(x: size.width - 100, y: size.height - 200)
         lifeLabel.text = "Lives: \(lives)"
         addChild(lifeLabel)
     }
     
+    func createClockImage() {
+        print("created clockImage")
+        let clockImageTexture = SKTexture(imageNamed: Resources.ItemImages.clockImage)
+        clockImage = SKSpriteNode(texture: clockImageTexture, size: CGSize(width: 75, height: 75))
+        
+        clockImage.position = CGPoint(x: size.width / 2, y: size.height - 64)
+        clockImage.name = "clockImage"
+        clockImage.zPosition = 1
+        addChild(clockImage)
+    }
+    
+    func createHeartImage() {
+        print("lives created")
+        
+        let heartImageTexture = getHeartTexture(lives: lives)
+        heartImage = SKSpriteNode(texture: heartImageTexture, size: CGSize(width: 75, height: 65))
+        
+        heartImage.position = CGPoint(x: (50 + size.width/2) / 2 + 10, y: pauseButton.position.y - 10)
+        heartImage.name = "heartImage"
+        heartImage.zPosition = 1
+        addChild(heartImage)
+    }
+    
+    func getHeartTexture(lives: Int) -> SKTexture {
+        switch lives {
+        case 5:
+            return SKTexture(imageNamed: Resources.ItemImages.x5Heart)
+        case 4:
+            return SKTexture(imageNamed: Resources.ItemImages.x4Heart)
+        case 3:
+            return SKTexture(imageNamed: Resources.ItemImages.x3Heart)
+        case 2:
+            return SKTexture(imageNamed: Resources.ItemImages.x2Heart)
+        case 1:
+            return SKTexture(imageNamed: Resources.ItemImages.x1Heart)
+        default:
+            return SKTexture(imageNamed: Resources.ItemImages.x0Heart)
+        }
+    }
+        
     //MARK: Position
     func isPositionValid(_ position: CGPoint, existingNodes: [SKNode], minDistance: CGFloat) -> Bool {
-        print("position validation")
-        print(position, existingNodes.map{$0.position}, minDistance)
         for node in existingNodes {
             let nodePosition = node.position
             let nodeSize: CGFloat
@@ -184,14 +232,12 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             let distance = hypot(position.x - nodePosition.x, position.y - nodePosition.y)
             if distance < minDistance + nodeSize / 2 {
-                print(false)
                 return false
             }
         }
-        print(true)
         return true
     }
-
+    
     
     // MARK: - Game over
     func gameOver() {
@@ -202,7 +248,8 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
         gameOverLabel.fontColor = .red
         gameOverLabel.position = CGPoint(x: size.width / 2, y: size.height / 2)
         addChild(gameOverLabel)
-        
+        timer?.invalidate()
         isPaused = true
     }
 }
+

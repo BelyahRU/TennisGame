@@ -53,7 +53,6 @@ extension GameScene {
                 position = CGPoint(x: CGFloat.random(in: 0.0...sizeW), y: sizeH - 200)
                 isValidPosition = self?.isPositionValid(position, existingNodes: existingNodes, minDistance: minDistance) ?? false
 
-                print("after")
             }
 
             // Обновляем позицию шара в основном потоке
