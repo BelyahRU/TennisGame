@@ -43,14 +43,13 @@ extension GameScene {
 
         // Выполняем проверку в отдельном потоке
         DispatchQueue.global().async { [weak self] in
-            print("setupBall")
             var isValidPosition = false
             var position = CGPoint.zero
 
             while !isValidPosition {
                 let sizeW = self!.size.width
                 let sizeH = self!.size.height
-                position = CGPoint(x: CGFloat.random(in: 0.0...sizeW), y: sizeH - 200)
+                position = CGPoint(x: CGFloat.random(in: 0.0...sizeW), y: sizeH + 60)
                 isValidPosition = self?.isPositionValid(position, existingNodes: existingNodes, minDistance: minDistance) ?? false
 
             }

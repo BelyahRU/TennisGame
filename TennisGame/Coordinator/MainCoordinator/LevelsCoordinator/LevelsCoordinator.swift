@@ -5,10 +5,13 @@ import UIKit
 final class LevelsCoordinator: Coordinator {
     
     var navigationController: UINavigationController
+    var mainCoordinator: MainCoordinator!
+    var gameCoordinator: GameCoordinator!
     
     private var levelsViewController: LevelsViewController!
     
-    init() {
+    init(mainCoordinator: MainCoordinator) {
+        self.mainCoordinator = mainCoordinator
         navigationController = UINavigationController()
         navigationController.navigationBar.isHidden = true
     }
@@ -27,5 +30,12 @@ final class LevelsCoordinator: Coordinator {
     public func showMain() {
         navigationController.popViewController(animated: true)
     }
+    
+    public func showGame(with level: Int) {
+        gameCoordinator = GameCoordinator(level: level, mainCoordinator: mainCoordinator)//FIX
+        gameCoordinator.navigationController = navigationController
+        gameCoordinator.start()
+    }
+
     
 }

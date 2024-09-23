@@ -28,17 +28,21 @@ extension LevelsViewController: UICollectionViewDataSource, UICollectionViewDele
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-            let screenWidth = collectionView.bounds.width
-            
-            let numberOfColumns: CGFloat = 3
-            
-            let spacing: CGFloat = 16 / 430 * levelsView.bounds.width
-            let totalSpacing = spacing * (numberOfColumns - 1)
-            let availableWidth = screenWidth - totalSpacing
-            let itemWidth = availableWidth / numberOfColumns
-            
-            let itemHeight = itemWidth * (148 / 99)
-            
-            return CGSize(width: itemWidth, height: itemHeight)
-        }
+        let screenWidth = collectionView.bounds.width
+        
+        let numberOfColumns: CGFloat = 3
+        
+        let spacing: CGFloat = 16 / 430 * levelsView.bounds.width
+        let totalSpacing = spacing * (numberOfColumns - 1)
+        let availableWidth = screenWidth - totalSpacing
+        let itemWidth = availableWidth / numberOfColumns
+        
+        let itemHeight = itemWidth * (148 / 99)
+        
+        return CGSize(width: itemWidth, height: itemHeight)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        levelsCoordinator.showGame(with: indexPath.row + 1)
+    }
 }

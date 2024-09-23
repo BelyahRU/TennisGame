@@ -14,14 +14,6 @@ extension GameScene {
                 }
             ]))
         }
-//        DispatchQueue.main.async {
-//            self.run(SKAction.sequence([
-//                SKAction.wait(forDuration: randomTime),
-//                SKAction.run { [weak self] in
-//                    self?.spawnHeart()
-//                }
-//            ]))
-//        }
         
     }
     func spawnHeart() {
@@ -42,7 +34,6 @@ extension GameScene {
         while !isValidPosition {
             
             position = CGPoint(x: CGFloat.random(in: 0...size.width), y: size.height - 10)
-            print(position)
             isValidPosition = isPositionValid(position, existingNodes: children.filter {
                 $0.physicsBody?.categoryBitMask == ballCategory ||
                 $0.physicsBody?.categoryBitMask == meteorCategory ||

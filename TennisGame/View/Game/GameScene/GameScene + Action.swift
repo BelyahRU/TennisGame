@@ -13,28 +13,36 @@ extension GameScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-            guard let touch = touches.first else { return }
-            if let pauseButton = childNode(withName: "pauseButton") as? SKSpriteNode {
-                if pauseButton.contains(touch.location(in: self)) {
-                    if isPaused {
-                        isPaused = false
-                        startTimer(timerTime: timeRemaining)
-                    } else {
-                        isPaused = true
-                        timer?.invalidate()
+        guard let touch = touches.first else { return }
+        if let pauseButton = childNode(withName: "pauseButton") as? SKSpriteNode {
+            if pauseButton.contains(touch.location(in: self)) {
+                if isPaused == false {
+                    isPaused = true
+                    timer?.invalidate()
+                    if pauseView == nil {
+                        pauseView = PauseView(frame: CGRect(x: 0, y: 0, width: 290, height: 345))
+//                            pauseView = PauseView()
+                        pauseView?.center = CGPoint(x: size.width / 2, y: size.height - 350)
+                        pauseView?.resumeButton.addTarget(self, action: #selector(resumeGame), for: .touchUpInside)
+                        pauseView?.backToMenuButton.addTarget(self, action: #selector(backToMenu), for: .touchUpInside)
                     }
-                }
-            }
-            if let restartButton = childNode(withName: "restartButton") as? SKSpriteNode {
-                if restartButton.contains(touch.location(in: self)) {
-                    // Перезагрузка сцены
-                    let scene = GameScene(size: size)
-                    scene.scaleMode = .aspectFit
-                    scene.currentLevel = currentLevel
-                    view?.presentScene(scene)
+                    if let view = view {
+                        view.window?.rootViewController?.view.addSubview(pauseView!)
+                    }
+
                 }
             }
         }
+        if let restartButton = childNode(withName: "restartButton") as? SKSpriteNode {
+            if restartButton.contains(touch.location(in: self)) {
+                // Перезагрузка сцены
+                let scene = GameScene(size: size)
+                scene.scaleMode = .aspectFit
+                scene.currentLevel = currentLevel
+                view?.presentScene(scene)
+            }
+        }
+    }
 
 
     func setupMeteorBallSpawnWith(meteorPersent: Double, meteorSpeed: Int, ballSpeed: Int, duration: Range<Double>) {
@@ -90,7 +98,7 @@ extension GameScene {
     //MARK: Ball
     func ballCollision(bodyA: SKPhysicsBody, bodyB: SKPhysicsBody) {
         score += 1
-        scoreLabel.text = "Score: \(score)"
+        scoreLabel.text = "\(score)"
         if bodyA.categoryBitMask == ballCategory {
             bodyA.node?.removeFromParent()
         } else {
@@ -156,7 +164,7 @@ extension GameScene {
     //MARK: Star
     private func starCollision(bodyA: SKPhysicsBody, bodyB: SKPhysicsBody) {
         score += 50
-        scoreLabel.text = "Score: \(score)"
+        scoreLabel.text = "\(score)"
         
         if bodyA.categoryBitMask == starCategory {
             bodyA.node?.removeFromParent()
@@ -165,13 +173,28 @@ extension GameScene {
         }
     }
     
-    //MARK:
     private func activateInvincibility(duration: TimeInterval) {
         isInvincible = true
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + duration) { [weak self] in
-            self?.isInvincible = false
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            self.isInvincible = false
         }
+        gameSceneDelegate?.showShield()
+
+    }
+
+
+    // Действие для кнопки "Продолжить"
+    @objc func resumeGame() {
+        isPaused = false
+        startTimer(timerTime: timeRemaining)
+        pauseView?.removeFromSuperview()
+        pauseView = nil
+    }
+
+    // Действие для кнопки "Вернуться в меню"
+    @objc func backToMenu() {
+        pauseView?.removeFromSuperview()
+        gameSceneDelegate?.showMain()
     }
 
 }

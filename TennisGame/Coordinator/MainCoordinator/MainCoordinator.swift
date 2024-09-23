@@ -9,6 +9,8 @@ final class MainCoordinator: Coordinator {
     var gameCoordinator: GameCoordinator!
     var levelsCoordinator: LevelsCoordinator!
     
+    var viewModel = MainCoordinatorViewModel()
+    
     init() {
         self.navigationController = UINavigationController()
         self.navigationController.navigationBar.isHidden = true
@@ -25,13 +27,13 @@ final class MainCoordinator: Coordinator {
     }
     
     public func showGame() {
-        gameCoordinator = GameCoordinator()
+        gameCoordinator = GameCoordinator(level: viewModel.getLastOpenedLevel().num, mainCoordinator: self)//FIX
         gameCoordinator.navigationController = navigationController
         gameCoordinator.start()
     }
     
     public func showLevels() {
-        levelsCoordinator = LevelsCoordinator()
+        levelsCoordinator = LevelsCoordinator(mainCoordinator: self)
         levelsCoordinator.navigationController = navigationController
         levelsCoordinator.start()
     }

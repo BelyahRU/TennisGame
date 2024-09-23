@@ -4,6 +4,14 @@ import UIKit
 
 enum Resources {
     
+    enum ViewImages {
+        static let pauseView = "pauseView"
+        static let levelCompletedWith1Star = "levelCompletedWith1Star"
+        static let levelCompletedWith2Star = "levelCompletedWith2Star"
+        static let levelCompletedWith3Star = "levelCompletedWith3Star"
+        static let levelFailed = "levelFailed"
+    }
+    
     enum ButtonImages {
         static let gameStartButton = "gameStartButton"
         static let levelsButton = "levelsButton"
@@ -11,6 +19,8 @@ enum Resources {
         static let backButton = "backButton"
         static let restartButton = "restartButton"
         static let pauseButton = "pauseButton"
+        static let backToMenuButton = "backToMenuButton"
+        static let resumeButton = "resumeButton"
     }
     
     enum LabelImages {
@@ -37,6 +47,7 @@ enum Resources {
         static let shield = "shieldImage"
         static let star = "starImage"
         static let clockImage = "clockImage"
+        static let scoreImage = "scoreImage"
         static let x0Heart = "x0Heart"
         static let x1Heart = "x1Heart"
         static let x2Heart = "x2Heart"

@@ -3,6 +3,12 @@ import GameplayKit
 
 final class GameScene: SKScene, SKPhysicsContactDelegate {
     
+    //delegate
+    weak var gameSceneDelegate: gameSceneDelegate?
+    
+    //views
+    var pauseView: PauseView?
+
     // levels
     var currentLevel: Int = 0
     var currentLevelParams: Level?
@@ -17,6 +23,7 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var clockImage: SKSpriteNode!
     var heartImage: SKSpriteNode!
+    var scoreImage: SKSpriteNode!
     
     //labels
     var scoreLabel: SKLabelNode!
@@ -28,7 +35,7 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
     var pauseButton: SKSpriteNode!
     var restartButton: SKSpriteNode!
     
-    var score = 0
+    var score = 2000
     var lives = 3
     var isInvincible = false
     
@@ -45,6 +52,7 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
     var timerLabel: SKLabelNode!
     var timer: Timer?
     var timeRemaining = 0
+    var newTime = 0
     
     //viewModel
     let viewModel = GameSceneViewModel()
@@ -52,13 +60,13 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didMove(to view: SKView) {
         loadLevel(levelNumber: currentLevel)
         configure()
-        startTimer(timerTime: 245)
+        startTimer(timerTime: newTime)
         createClockImage()
         createTimerLabel()
     }
     
     func loadLevel(levelNumber: Int) {
-        if levelNumber < viewModel.getCountLevels() && levelNumber > 0 {
+        if levelNumber <= viewModel.getCountLevels() && levelNumber > 0 {
             currentLevelParams = viewModel.getLevel(by: levelNumber)
             setupLevel(for: currentLevelParams?.num ?? 1)
         } else {
@@ -73,6 +81,7 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
         createPauseButton()
         createRestartButton()
         createHeartImage()
+        createScoreImage()
         //
     }
     
@@ -145,7 +154,7 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
         
         racket = SKSpriteNode(texture: racketTexture, size: CGSize(width: racketWidth, height: racketHeight))
         
-        racket.position = CGPoint(x: size.width / 2, y: racketHeight / 2 + 20)
+        racket.position = CGPoint(x: size.width / 2, y: 80)
         
         let leftHalfWidth = racketWidth / 2
         let collisionAreaSize = CGSize(width: leftHalfWidth, height: racketHeight)
@@ -161,22 +170,14 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(racket)
     }
     
-    
-    
     func createLabels() {
         print("created labels")
-        scoreLabel = SKLabelNode(fontNamed: "Arial")
-        scoreLabel.fontSize = 24
-        scoreLabel.fontColor = .white
-        scoreLabel.position = CGPoint(x: size.width / 2, y: size.height - 200)
-        scoreLabel.text = "Score: \(score)"
-        addChild(scoreLabel)
         
         lifeLabel = SKLabelNode(fontNamed: "Arial")
         lifeLabel.fontSize = 24
         lifeLabel.fontColor = .white
         lifeLabel.position = CGPoint(x: size.width - 100, y: size.height - 200)
-        lifeLabel.text = "Lives: \(lives)"
+        lifeLabel.text = "\(lives)"
         addChild(lifeLabel)
     }
     
@@ -197,7 +198,7 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
         let heartImageTexture = getHeartTexture(lives: lives)
         heartImage = SKSpriteNode(texture: heartImageTexture, size: CGSize(width: 75, height: 65))
         
-        heartImage.position = CGPoint(x: (50 + size.width/2) / 2 + 10, y: pauseButton.position.y - 10)
+        heartImage.position = CGPoint(x: (50 + size.width/2) / 2 + 10, y: pauseButton.position.y - 6.5)
         heartImage.name = "heartImage"
         heartImage.zPosition = 1
         addChild(heartImage)
@@ -218,6 +219,26 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
         default:
             return SKTexture(imageNamed: Resources.ItemImages.x0Heart)
         }
+    }
+    
+    func createScoreImage() {
+        print("score created")
+        
+        let scoreImageTexture = SKTexture(imageNamed: Resources.ItemImages.scoreImage)
+        scoreImage = SKSpriteNode(texture: scoreImageTexture, size: CGSize(width: 52, height: 60))
+        
+        scoreImage.position = CGPoint(x: (size.width-50 + size.width/2) / 2, y: pauseButton.position.y - 2)
+        scoreImage.name = "score"
+        scoreImage.zPosition = 1
+        addChild(scoreImage)
+        
+        scoreLabel = SKLabelNode(fontNamed: "BULGOGI")
+        scoreLabel.fontSize = 14
+        scoreLabel.fontColor = .white
+        scoreLabel.position = CGPoint(x: scoreImage.position.x, y: scoreImage.position.y - 12)
+        scoreLabel.text = "\(score)"
+        scoreLabel.zPosition = 2
+        addChild(scoreLabel)
     }
         
     //MARK: Position

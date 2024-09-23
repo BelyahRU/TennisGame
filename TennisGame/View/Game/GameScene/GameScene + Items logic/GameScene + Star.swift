@@ -7,9 +7,8 @@ extension GameScene {
     
     func scheduleStarSpawn(range: Range<Double>) {
         let randomTime = Double.random(in: range)
-        DispatchQueue.main.async {
+        DispatchQueue.main.asyncAfter(deadline: .now() + randomTime) {
             self.run(SKAction.sequence([
-                SKAction.wait(forDuration: randomTime),
                 SKAction.run { [weak self] in
                     self?.spawnStar()
                 }
@@ -33,16 +32,16 @@ extension GameScene {
         var position = CGPoint.zero
         
         while !isValidPosition {
-            position = CGPoint(x: CGFloat.random(in: 0...size.width), y: size.height + 50)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                isValidPosition = self.isPositionValid(position, existingNodes: self.children.filter {
-                    $0.physicsBody?.categoryBitMask == self.ballCategory ||
-                    $0.physicsBody?.categoryBitMask == self.meteorCategory ||
-                    $0.physicsBody?.categoryBitMask == self.shieldCategory ||
-                    $0.physicsBody?.categoryBitMask == self.heartCategory ||
-                    $0.physicsBody?.categoryBitMask == self.starCategory
-                }, minDistance: minDistance)
-            }
+            position = CGPoint(x: CGFloat.random(in: 0...size.width), y: size.height - 10)
+            
+            isValidPosition = isPositionValid(position, existingNodes: children.filter {
+                $0.physicsBody?.categoryBitMask == ballCategory ||
+                $0.physicsBody?.categoryBitMask == meteorCategory ||
+                $0.physicsBody?.categoryBitMask == shieldCategory ||
+                $0.physicsBody?.categoryBitMask == heartCategory ||
+                $0.physicsBody?.categoryBitMask == starCategory
+            }, minDistance: minDistance)
+
         }
 
         star.position = position
