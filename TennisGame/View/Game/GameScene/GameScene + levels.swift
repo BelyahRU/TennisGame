@@ -43,7 +43,7 @@ extension GameScene {
     
     //1
     func setupFirstLevel() {
-        newTime = 60
+        newTime = 20
         lives = 3
         setupMeteorBallSpawnWith(meteorPersent: 0.5, meteorSpeed: 0, ballSpeed: 0, duration: Double(1.2)..<Double(2))
     }

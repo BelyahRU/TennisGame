@@ -39,6 +39,7 @@ extension GameScene {
                 let scene = GameScene(size: size)
                 scene.scaleMode = .aspectFit
                 scene.currentLevel = currentLevel
+                scene.gameSceneDelegate = gameSceneDelegate
                 view?.presentScene(scene)
             }
         }
@@ -49,6 +50,7 @@ extension GameScene {
         let spawnRandomItem = SKAction.run {
             let itemType = Int.random(in: 0...1)
             if Double(itemType) > meteorPersent {
+                self.allBalls += 1
                 self.spawnBall(speed: ballSpeed)
             } else {
                 self.spawnMeteor(speed: meteorSpeed)
@@ -72,7 +74,7 @@ extension GameScene {
         
         let collision = bodyA.categoryBitMask | bodyB.categoryBitMask
         
-        // +score
+        // +10 score
         if collision == racketCategory | ballCategory {
             ballCollision(bodyA: bodyA, bodyB: bodyB)
         }
@@ -88,7 +90,7 @@ extension GameScene {
         else if collision == racketCategory | shieldCategory {
             shieldCollision(bodyA: bodyA, bodyB: bodyB)
         }
-        // + 50 scope
+        // + 100 score
         else if collision == racketCategory | starCategory {
             starCollision(bodyA: bodyA, bodyB: bodyB)
         }
@@ -97,7 +99,8 @@ extension GameScene {
     
     //MARK: Ball
     func ballCollision(bodyA: SKPhysicsBody, bodyB: SKPhysicsBody) {
-        score += 1
+        gotBalls += 1
+        score += 10
         scoreLabel.text = "\(score)"
         if bodyA.categoryBitMask == ballCategory {
             bodyA.node?.removeFromParent()
@@ -121,15 +124,16 @@ extension GameScene {
         }
         
         lives -= 1
-        lifeLabel.text = "Lives: \(lives)"
         heartImage.texture = getHeartTexture(lives: lives)
         
         meteorBody.node?.removeFromParent()
         
         if lives > 0 {
             racket.isHidden = true
+            isInvincible = true
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 self.racket.isHidden = false
+                self.isInvincible = false
             }
         } else {
             gameOver()
@@ -141,7 +145,6 @@ extension GameScene {
     //MARK: Heart
     func heartCollision(bodyA: SKPhysicsBody, bodyB: SKPhysicsBody) {
         lives += 1
-        lifeLabel.text = "Lives: \(lives)"
         
         if bodyA.categoryBitMask == heartCategory {
             bodyA.node?.removeFromParent()
@@ -163,7 +166,7 @@ extension GameScene {
     
     //MARK: Star
     private func starCollision(bodyA: SKPhysicsBody, bodyB: SKPhysicsBody) {
-        score += 50
+        score += 100
         scoreLabel.text = "\(score)"
         
         if bodyA.categoryBitMask == starCategory {
@@ -187,14 +190,29 @@ extension GameScene {
     @objc func resumeGame() {
         isPaused = false
         startTimer(timerTime: timeRemaining)
-        pauseView?.removeFromSuperview()
-        pauseView = nil
+        if pauseView != nil {
+            pauseView?.removeFromSuperview()
+            pauseView = nil
+        }
+        if gameOverView != nil {
+            gameOverView?.removeFromSuperview()
+            gameOverView = nil
+        }
     }
 
     // Действие для кнопки "Вернуться в меню"
     @objc func backToMenu() {
-        pauseView?.removeFromSuperview()
+        
         gameSceneDelegate?.showMain()
+        
+        if pauseView != nil {
+            pauseView?.removeFromSuperview()
+            pauseView = nil
+        }
+        if gameOverView != nil {
+            gameOverView?.removeFromSuperview()
+            gameOverView = nil
+        }
     }
 
 }

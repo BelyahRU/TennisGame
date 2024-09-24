@@ -14,7 +14,13 @@ final class GameViewController: UIViewController, gameSceneDelegate {
 
     var scene: GameScene!
 
-   private lazy var progressView = ShieldLoadingView()
+    private lazy var progressView = ShieldLoadingView()
+    private let mainBackground: UIImageView = {
+        let im = UIImageView()
+        im.image = UIImage(named: Resources.BackgroundImages.mainBackgroundImage)
+        im.contentMode = .scaleAspectFill
+        return im
+    }()
 
 
     override func viewDidLoad() {
@@ -23,23 +29,26 @@ final class GameViewController: UIViewController, gameSceneDelegate {
         // 1. Добавление progressView в начале
 
         setupScene()
-
+//        showGameOver()
         // 3. Вызов showShield() после layout и setupScene
     }
 
     private func setupScene() {
+        view.addSubview(mainBackground)
+        mainBackground.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
         let skView = SKView(frame: .zero)
         skView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(skView)
 
-        skView.backgroundColor = .clear
+        skView.backgroundColor = nil
         skView.ignoresSiblingOrder = true
 
         skView.snp.makeConstraints { make in
             make.bottom.equalToSuperview()
             make.leading.trailing.equalToSuperview()
             make.top.equalToSuperview().offset(50)
-            
         }
         
         view.addSubview(progressView)

@@ -8,6 +8,7 @@ final class MainCoordinator: Coordinator {
     var mainViewController: MainViewController!
     var gameCoordinator: GameCoordinator!
     var levelsCoordinator: LevelsCoordinator!
+    var shopCoordinator: ShopCoordinator!
     
     var viewModel = MainCoordinatorViewModel()
     
@@ -36,6 +37,12 @@ final class MainCoordinator: Coordinator {
         levelsCoordinator = LevelsCoordinator(mainCoordinator: self)
         levelsCoordinator.navigationController = navigationController
         levelsCoordinator.start()
+    }
+    
+    public func showShop() {
+        shopCoordinator = ShopCoordinator(mainCoordinator: self)
+        shopCoordinator.navigationController = navigationController
+        shopCoordinator.start()
     }
     
     

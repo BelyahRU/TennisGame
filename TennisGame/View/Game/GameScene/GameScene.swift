@@ -8,6 +8,7 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
     
     //views
     var pauseView: PauseView?
+    var gameOverView: GameOverView?
 
     // levels
     var currentLevel: Int = 0
@@ -27,7 +28,6 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
     
     //labels
     var scoreLabel: SKLabelNode!
-    var lifeLabel: SKLabelNode!
     
     
     
@@ -35,7 +35,7 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
     var pauseButton: SKSpriteNode!
     var restartButton: SKSpriteNode!
     
-    var score = 2000
+    var score = 0
     var lives = 3
     var isInvincible = false
     
@@ -57,12 +57,21 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
     //viewModel
     let viewModel = GameSceneViewModel()
     
+    //for countingStars
+    var allBalls = 0
+    var gotBalls = 0
+    
+    let backgroundTexture = SKTexture(image: UIImage(named:
+                        Resources.BackgroundImages.mainBackgroundImage)!)
+    
     override func didMove(to view: SKView) {
+
         loadLevel(levelNumber: currentLevel)
         configure()
         startTimer(timerTime: newTime)
         createClockImage()
         createTimerLabel()
+
     }
     
     func loadLevel(levelNumber: Int) {
@@ -75,14 +84,22 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func configure() {
+        let backgroundNode = SKSpriteNode(texture: backgroundTexture)
+        
+        // 4. Устанавливаем размер спрайта, чтобы он занимал весь экран
+        backgroundNode.size = size
+        
+        // 5. Устанавливаем позицию спрайта в центр экрана
+        backgroundNode.position = CGPoint(x: size.width / 2, y: size.height / 2)
+        backgroundNode.zPosition = -5
+        // 6. Добавляем спрайт в сцену
+        addChild(backgroundNode)
         setupPhysics()
         createRacket()
-        createLabels()
         createPauseButton()
         createRestartButton()
         createHeartImage()
         createScoreImage()
-        //
     }
     
     //MARK: Timer
@@ -129,7 +146,7 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
         
         pauseButton.position = CGPoint(x: 50, y: size.height - 64)
         pauseButton.name = "pauseButton"
-        
+        pauseButton.zPosition = 2
         addChild(pauseButton)
     }
     
@@ -140,7 +157,7 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
         
         restartButton.position = CGPoint(x: size.width-50, y: size.height - 64)
         restartButton.name = "restartButton"
-        
+        restartButton.zPosition = 2
         addChild(restartButton)
     }
     
@@ -148,7 +165,8 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func createRacket() {
         print("created racket")
-        let racketTexture = SKTexture(imageNamed: Resources.RacketImages.racketImage)
+        print(viewModel.getRacketCurrentName())
+        let racketTexture = SKTexture(imageNamed: viewModel.getRacketCurrentName())
         let racketWidth = size.width * 0.58
         let racketHeight = racketWidth * (racketTexture.size().height / racketTexture.size().width)
         
@@ -168,17 +186,6 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
         racket.physicsBody = collisionBody
         
         addChild(racket)
-    }
-    
-    func createLabels() {
-        print("created labels")
-        
-        lifeLabel = SKLabelNode(fontNamed: "Arial")
-        lifeLabel.fontSize = 24
-        lifeLabel.fontColor = .white
-        lifeLabel.position = CGPoint(x: size.width - 100, y: size.height - 200)
-        lifeLabel.text = "\(lives)"
-        addChild(lifeLabel)
     }
     
     func createClockImage() {
@@ -260,17 +267,5 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     
-    // MARK: - Game over
-    func gameOver() {
-        print("gameOver")
-        let gameOverLabel = SKLabelNode(fontNamed: "Arial")
-        gameOverLabel.text = "Game Over"
-        gameOverLabel.fontSize = 48
-        gameOverLabel.fontColor = .red
-        gameOverLabel.position = CGPoint(x: size.width / 2, y: size.height / 2)
-        addChild(gameOverLabel)
-        timer?.invalidate()
-        isPaused = true
-    }
 }
 

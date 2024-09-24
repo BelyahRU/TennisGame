@@ -21,11 +21,19 @@ enum Resources {
         static let pauseButton = "pauseButton"
         static let backToMenuButton = "backToMenuButton"
         static let resumeButton = "resumeButton"
+        static let nextLevelButton = "nextLevelButton"
+        static let restartButtonBig = "restartButtonBig"
+        static let takeButton = "takeButton"
+        static let buyButton = "buyButton"
+        static let rightButton = "rightButton"
+        static let leftButton = "leftButton"
     }
     
     enum LabelImages {
         static let winTennisProLabel = "winTennisProLabel"
         static let levelsLabel = "levelsLabel"
+        static let shopLabel = "shopLabel"
+        static let balanceLabel = "balanceLabel"
     }
     
     enum AsteroidImages {
@@ -57,7 +65,9 @@ enum Resources {
     }
     
     enum RacketImages {
-        static let racketImage = "racketImage"
+        static let racketImageFree = "racketImageFree"
+        static let racketImage5000 = "racketImage5000"
+        static let racketImage10000 = "racketImage10000"
     }
     
     enum BallImages {
@@ -71,6 +81,14 @@ enum Resources {
         static let levelPassed2Star = "levelPassed2Star"
         static let levelPassed3Star = "levelPassed3Star"
     }
+    
+    enum ShopViews {
+        static let racketFree = "racketFree"
+        static let racket5000 = "racket5000"
+        static let racket10000 = "racket10000"
+        static let cloudView = "cloudView"
+    }
+    
     
     enum Colors {
         static let blockedLevelGrayText = UIColor(red: 136/255, green: 136/255, blue: 136/255, alpha: 1.0)

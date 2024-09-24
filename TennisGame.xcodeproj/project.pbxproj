@@ -12,6 +12,14 @@
 		1A47684A2CA1C6C6004BD6BB /* ShieldLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4768492CA1C6C6004BD6BB /* ShieldLoadingView.swift */; };
 		1A47684C2CA1F7C1004BD6BB /* PauseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A47684B2CA1F7C1004BD6BB /* PauseView.swift */; };
 		1A47684E2CA20C19004BD6BB /* MainCoordinatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A47684D2CA20C19004BD6BB /* MainCoordinatorViewModel.swift */; };
+		1A4768502CA2114E004BD6BB /* GameOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A47684F2CA2114E004BD6BB /* GameOverView.swift */; };
+		1A4768522CA217F2004BD6BB /* GameScene + GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4768512CA217F2004BD6BB /* GameScene + GameOver.swift */; };
+		1A4768552CA22158004BD6BB /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4768542CA22158004BD6BB /* ShopViewController.swift */; };
+		1A4768572CA22180004BD6BB /* ShopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4768562CA22180004BD6BB /* ShopView.swift */; };
+		1A47685A2CA22BA8004BD6BB /* ShopManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4768592CA22BA8004BD6BB /* ShopManager.swift */; };
+		1A47685C2CA22C96004BD6BB /* ShopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A47685B2CA22C96004BD6BB /* ShopViewModel.swift */; };
+		1A47685E2CA230DC004BD6BB /* ShopViewController + Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A47685D2CA230DC004BD6BB /* ShopViewController + Action.swift */; };
+		1A4768602CA2384D004BD6BB /* ShopCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A47685F2CA2384D004BD6BB /* ShopCoordinator.swift */; };
 		1AAE11AC2C9B40B600AF1F39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE11AB2C9B40B600AF1F39 /* AppDelegate.swift */; };
 		1AAE11AE2C9B40B600AF1F39 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE11AD2C9B40B600AF1F39 /* SceneDelegate.swift */; };
 		1AAE11B52C9B40B900AF1F39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1AAE11B42C9B40B900AF1F39 /* Assets.xcassets */; };
@@ -52,6 +60,14 @@
 		1A4768492CA1C6C6004BD6BB /* ShieldLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShieldLoadingView.swift; sourceTree = "<group>"; };
 		1A47684B2CA1F7C1004BD6BB /* PauseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseView.swift; sourceTree = "<group>"; };
 		1A47684D2CA20C19004BD6BB /* MainCoordinatorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinatorViewModel.swift; sourceTree = "<group>"; };
+		1A47684F2CA2114E004BD6BB /* GameOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverView.swift; sourceTree = "<group>"; };
+		1A4768512CA217F2004BD6BB /* GameScene + GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameScene + GameOver.swift"; sourceTree = "<group>"; };
+		1A4768542CA22158004BD6BB /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
+		1A4768562CA22180004BD6BB /* ShopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopView.swift; sourceTree = "<group>"; };
+		1A4768592CA22BA8004BD6BB /* ShopManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopManager.swift; sourceTree = "<group>"; };
+		1A47685B2CA22C96004BD6BB /* ShopViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewModel.swift; sourceTree = "<group>"; };
+		1A47685D2CA230DC004BD6BB /* ShopViewController + Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShopViewController + Action.swift"; sourceTree = "<group>"; };
+		1A47685F2CA2384D004BD6BB /* ShopCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCoordinator.swift; sourceTree = "<group>"; };
 		1AAE11A82C9B40B600AF1F39 /* TennisGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TennisGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AAE11AB2C9B40B600AF1F39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1AAE11AD2C9B40B600AF1F39 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -101,11 +117,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A4768532CA2214B004BD6BB /* Shop */ = {
+			isa = PBXGroup;
+			children = (
+				1A4768542CA22158004BD6BB /* ShopViewController.swift */,
+				1A4768562CA22180004BD6BB /* ShopView.swift */,
+				1A47685D2CA230DC004BD6BB /* ShopViewController + Action.swift */,
+			);
+			path = Shop;
+			sourceTree = "<group>";
+		};
+		1A4768582CA22B98004BD6BB /* Rackets */ = {
+			isa = PBXGroup;
+			children = (
+				1A4768592CA22BA8004BD6BB /* ShopManager.swift */,
+			);
+			path = Rackets;
+			sourceTree = "<group>";
+		};
 		1AA373652C9F17F500504816 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				1A4768492CA1C6C6004BD6BB /* ShieldLoadingView.swift */,
 				1A47684B2CA1F7C1004BD6BB /* PauseView.swift */,
+				1A47684F2CA2114E004BD6BB /* GameOverView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -143,6 +178,7 @@
 				1AD899772C9DB71F00F9E65E /* LevelsViewModel.swift */,
 				1AD899802C9DDBC200F9E65E /* GameSceneViewModel.swift */,
 				1A47684D2CA20C19004BD6BB /* MainCoordinatorViewModel.swift */,
+				1A47685B2CA22C96004BD6BB /* ShopViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -150,6 +186,7 @@
 		1AAE11C22C9B433B00AF1F39 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1A4768532CA2214B004BD6BB /* Shop */,
 				1AAE11EE2C9CC5CC00AF1F39 /* Levels */,
 				1AAE11B62C9B40B900AF1F39 /* LaunchScreen.storyboard */,
 				1AAE11E22C9C344100AF1F39 /* Game */,
@@ -244,6 +281,7 @@
 				1AAE11E52C9C346F00AF1F39 /* GameScene.swift */,
 				1AAE11E82C9C865E00AF1F39 /* GameScene + Action.swift */,
 				1A3328C42C9E2E5F0013E0E0 /* GameScene + levels.swift */,
+				1A4768512CA217F2004BD6BB /* GameScene + GameOver.swift */,
 			);
 			path = GameScene;
 			sourceTree = "<group>";
@@ -270,6 +308,7 @@
 		1AAE11F72C9CCACC00AF1F39 /* ShopCoordinator */ = {
 			isa = PBXGroup;
 			children = (
+				1A47685F2CA2384D004BD6BB /* ShopCoordinator.swift */,
 			);
 			path = ShopCoordinator;
 			sourceTree = "<group>";
@@ -302,6 +341,7 @@
 		1AD899692C9CE81200F9E65E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1A4768582CA22B98004BD6BB /* Rackets */,
 				1AD899732C9DB60500F9E65E /* Scope */,
 				1AD899722C9DB60000F9E65E /* Level */,
 			);
@@ -423,16 +463,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A4768502CA2114E004BD6BB /* GameOverView.swift in Sources */,
 				1AAE11C02C9B432D00AF1F39 /* Coordinator.swift in Sources */,
 				1AAE11D62C9B8B4100AF1F39 /* MainView.swift in Sources */,
 				1AAE12012C9CDA3900AF1F39 /* DataConstraints.swift in Sources */,
+				1A47685C2CA22C96004BD6BB /* ShopViewModel.swift in Sources */,
+				1A4768572CA22180004BD6BB /* ShopView.swift in Sources */,
 				1AAE11D42C9B89E700AF1F39 /* Resources.swift in Sources */,
 				1A47684A2CA1C6C6004BD6BB /* ShieldLoadingView.swift in Sources */,
+				1A4768522CA217F2004BD6BB /* GameScene + GameOver.swift in Sources */,
 				1AAE11E12C9B924B00AF1F39 /* GameCoordinator.swift in Sources */,
 				1AAE11F92C9CCAE900AF1F39 /* LevelsCoordinator.swift in Sources */,
 				1AD8997F2C9DD7EE00F9E65E /* GameScene + Star.swift in Sources */,
 				1AAE11AC2C9B40B600AF1F39 /* AppDelegate.swift in Sources */,
 				1A47684C2CA1F7C1004BD6BB /* PauseView.swift in Sources */,
+				1A47685E2CA230DC004BD6BB /* ShopViewController + Action.swift in Sources */,
 				1AAE11FB2C9CCF5C00AF1F39 /* LevelsVC + CollectionView.swift in Sources */,
 				1AAE11EB2C9C86C900AF1F39 /* GameScene + Meteor.swift in Sources */,
 				1A47684E2CA20C19004BD6BB /* MainCoordinatorViewModel.swift in Sources */,
@@ -441,10 +486,12 @@
 				1AD8996D2C9CE85E00F9E65E /* LevelManager.swift in Sources */,
 				1AAE11CE2C9B85AA00AF1F39 /* MainCoordinator.swift in Sources */,
 				1AD8996B2C9CE81F00F9E65E /* Level.swift in Sources */,
+				1A47685A2CA22BA8004BD6BB /* ShopManager.swift in Sources */,
 				1AD8997A2C9DBE6A00F9E65E /* GameScene + Heart.swift in Sources */,
 				1AAE11E92C9C865E00AF1F39 /* GameScene + Action.swift in Sources */,
 				1AAE11AE2C9B40B600AF1F39 /* SceneDelegate.swift in Sources */,
 				1AAE11E42C9C345A00AF1F39 /* GameViewController.swift in Sources */,
+				1A4768602CA2384D004BD6BB /* ShopCoordinator.swift in Sources */,
 				1AAE11DB2C9B908600AF1F39 /* MainVC + Action.swift in Sources */,
 				1AAE11F02C9CC5ED00AF1F39 /* LevelsView.swift in Sources */,
 				1AD899782C9DB71F00F9E65E /* LevelsViewModel.swift in Sources */,
@@ -457,6 +504,7 @@
 				1AD899752C9DB62900F9E65E /* ScopeManager.swift in Sources */,
 				1AAE11F42C9CC82900AF1F39 /* LevelsVC + Action.swift in Sources */,
 				1AD8997C2C9DD35400F9E65E /* GameScene + Shield.swift in Sources */,
+				1A4768552CA22158004BD6BB /* ShopViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

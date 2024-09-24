@@ -26,6 +26,6 @@ extension MainViewController {
     
     @objc
     func shopPressed() {
-        
+        coordinator.showShop()
     }
 }
