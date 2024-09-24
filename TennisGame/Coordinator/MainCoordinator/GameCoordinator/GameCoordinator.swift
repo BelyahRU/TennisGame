@@ -29,9 +29,10 @@ final class GameCoordinator: Coordinator {
     }
     
     public func showMain() {
-        
-        navigationController.popViewController(animated: true)
-        mainCoordinator.showMain()
+        navigationController.popToRootViewController(animated: true)
+//        navigationController.popViewController(animated: true)
+//        navigationController.popViewController(animated: true)
+//        mainCoordinator.showMain()
     }
     
     

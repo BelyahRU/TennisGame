@@ -43,6 +43,7 @@ enum Resources {
     
     enum BackgroundImages {
         static let mainBackgroundImage = "mainBackgroundImage"
+        static let loadingBackground = "loadingBackground"
     }
     
     enum MeteorImages {

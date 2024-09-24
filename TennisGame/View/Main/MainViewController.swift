@@ -10,11 +10,22 @@ final class MainViewController: UIViewController {
     public var gameStartButton: UIButton!
     public var levelsButton: UIButton!
     public var shopButton: UIButton!
+    
+    private let loadingView = LoadingView()
+    
+    override func loadView() {
+        super.loadView()
+        view.addSubview(loadingView)
+        loadingView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(LevelManager.shared.getAllLevels())
-        configure()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            self.configure()
+        }
     }
     
     private func configure() {

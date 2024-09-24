@@ -17,7 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func start() {
         coordinator = MainCoordinator()
         coordinator?.start()
-//        window?.rootViewController = ShopViewController()
+//        window?.rootViewController = LoadingViewController()
         window?.rootViewController = coordinator?.navigationController //main
         window?.makeKeyAndVisible()
     }
