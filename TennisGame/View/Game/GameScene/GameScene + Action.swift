@@ -22,7 +22,7 @@ extension GameScene {
                     if pauseView == nil {
                         pauseView = PauseView(frame: CGRect(x: 0, y: 0, width: 290, height: 345))
 //                            pauseView = PauseView()
-                        pauseView?.center = CGPoint(x: size.width / 2, y: size.height - 350)
+                        pauseView?.center = CGPoint(x: size.width / 2, y: size.height / 2)
                         pauseView?.resumeButton.addTarget(self, action: #selector(resumeGame), for: .touchUpInside)
                         pauseView?.backToMenuButton.addTarget(self, action: #selector(backToMenu), for: .touchUpInside)
                     }

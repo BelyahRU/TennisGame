@@ -18,17 +18,12 @@ extension ShopViewController {
     //previous
     @objc func leftButtonTapped() {
         currentRacketIndex = (currentRacketIndex - 1 + racketImages.count) % racketImages.count
-        print(currentRacketIndex)
-        print(viewModel.getAllRackets())
         UIView.transition(with: shopView.racketView,
                           duration: 0.5,
                           options: .transitionCrossDissolve,
                           animations: {
                               self.shopView.racketView.image = UIImage(named: self.racketImages[self.currentRacketIndex])
                           })
-        guard let racket = viewModel.getRacket(by: currentRacketIndex + 1) else {
-            return
-        }
         
         updateBuyTakeButtons()
     }
@@ -50,19 +45,14 @@ extension ShopViewController {
         guard let racket = viewModel.getRacket(by: currentRacketIndex + 1) else {
             return
         }
-        // Проверяем, куплена ли ракета
         if racket.isPurchased {
-            // Ракетка уже куплена
-            // Покажите сообщение или выполните другое действие
+            //already bought
         } else {
-            // Покупка ракетки
             if viewModel.buyRacket(racketId: racket.id) {
-                // Ракетка успешно куплена
                 updateBalanceLabel()
                 updateBuyTakeButtons()
             } else {
-                // Недостаточно валюты
-                // Покажите сообщение или выполните другое действие
+                //no money
             }
         }
     }
@@ -71,14 +61,11 @@ extension ShopViewController {
         guard let racket = viewModel.getRacket(by: currentRacketIndex + 1) else {
             return
         }
-        // Проверяем, куплена ли ракета
         if racket.isPurchased {
-            // Выбираем ракетку
             viewModel.setCurrentRacket(racket: racket)
             updateBuyTakeButtons()
         } else {
-            // Ракетка не куплена
-            // Покажите сообщение или выполните другое действие
+            //racket not bought
         }
     }
 

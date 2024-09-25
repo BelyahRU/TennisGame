@@ -39,6 +39,7 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
     var lives = 3
     var isInvincible = false
     
+    var screenHeigh = DataConstraints.screenHeight
     
     //bit category
     let racketCategory: UInt32 = 0x1 << 0
@@ -84,16 +85,7 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func configure() {
-        let backgroundNode = SKSpriteNode(texture: backgroundTexture)
-        
-        // 4. Устанавливаем размер спрайта, чтобы он занимал весь экран
-        backgroundNode.size = size
-        
-        // 5. Устанавливаем позицию спрайта в центр экрана
-        backgroundNode.position = CGPoint(x: size.width / 2, y: size.height / 2)
-        backgroundNode.zPosition = -5
-        // 6. Добавляем спрайт в сцену
-        addChild(backgroundNode)
+        createBackground()
         setupPhysics()
         createRacket()
         createPauseButton()
@@ -128,6 +120,15 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     //MARK: UI
+    func createBackground() {
+        let backgroundNode = SKSpriteNode(texture: backgroundTexture)
+        
+        backgroundNode.size = size
+        
+        backgroundNode.position = CGPoint(x: size.width / 2, y: size.height / 2)
+        backgroundNode.zPosition = -5
+        addChild(backgroundNode)
+    }
     func createTimerLabel() {
         print("timerLabel created")
         timerLabel = SKLabelNode(fontNamed: "BULGOGI")
@@ -143,8 +144,11 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
         print("created pauseButton")
         let pauseButtonTexture = SKTexture(imageNamed: Resources.ButtonImages.pauseButton)
         pauseButton = SKSpriteNode(texture: pauseButtonTexture, size: CGSize(width: 60, height: 60))
-        
-        pauseButton.position = CGPoint(x: 50, y: size.height - 64)
+        if screenHeigh < 800 {
+            pauseButton.position = CGPoint(x: 50, y: size.height - 30)
+        } else {
+            pauseButton.position = CGPoint(x: 50, y: size.height - 64)
+        }
         pauseButton.name = "pauseButton"
         pauseButton.zPosition = 2
         addChild(pauseButton)
@@ -154,8 +158,12 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
         print("created restartButton")
         let restartButtonTexture = SKTexture(imageNamed: Resources.ButtonImages.restartButton)
         restartButton = SKSpriteNode(texture: restartButtonTexture, size: CGSize(width: 60, height: 60))
+        if screenHeigh < 800 {
+            restartButton.position = CGPoint(x: size.width-50, y: size.height - 30)
+        } else {
+            restartButton.position = CGPoint(x: size.width-50, y: size.height - 64)
+        }
         
-        restartButton.position = CGPoint(x: size.width-50, y: size.height - 64)
         restartButton.name = "restartButton"
         restartButton.zPosition = 2
         addChild(restartButton)
@@ -192,8 +200,12 @@ final class GameScene: SKScene, SKPhysicsContactDelegate {
         print("created clockImage")
         let clockImageTexture = SKTexture(imageNamed: Resources.ItemImages.clockImage)
         clockImage = SKSpriteNode(texture: clockImageTexture, size: CGSize(width: 75, height: 75))
+        if screenHeigh < 800 {
+            clockImage.position = CGPoint(x: size.width / 2, y: size.height - 30)
+        } else {
+            clockImage.position = CGPoint(x: size.width / 2, y: size.height - 64)
+        }
         
-        clockImage.position = CGPoint(x: size.width / 2, y: size.height - 64)
         clockImage.name = "clockImage"
         clockImage.zPosition = 1
         addChild(clockImage)

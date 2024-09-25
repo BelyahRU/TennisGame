@@ -15,6 +15,7 @@ class GameOverView: UIView {
     private let scoreLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "BULGOGI", size: 34)
+        label.textColor = .white
         return label
     }()
     

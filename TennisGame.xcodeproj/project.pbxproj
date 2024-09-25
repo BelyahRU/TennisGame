@@ -54,8 +54,6 @@
 		1AD8997F2C9DD7EE00F9E65E /* GameScene + Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD8997E2C9DD7EE00F9E65E /* GameScene + Star.swift */; };
 		1AD899812C9DDBC200F9E65E /* GameSceneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD899802C9DDBC200F9E65E /* GameSceneViewModel.swift */; };
 		1AEE3DB52CA2F07100C93E60 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEE3DB42CA2F07100C93E60 /* LoadingView.swift */; };
-		1AEE3DBB2CA335A200C93E60 /* UserDockManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEE3DBA2CA335A200C93E60 /* UserDockManager.swift */; };
-		1AEE3DBD2CA3372000C93E60 /* DataPrivacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEE3DBC2CA3372000C93E60 /* DataPrivacy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -107,8 +105,6 @@
 		1AD8997E2C9DD7EE00F9E65E /* GameScene + Star.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameScene + Star.swift"; sourceTree = "<group>"; };
 		1AD899802C9DDBC200F9E65E /* GameSceneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSceneViewModel.swift; sourceTree = "<group>"; };
 		1AEE3DB42CA2F07100C93E60 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
-		1AEE3DBA2CA335A200C93E60 /* UserDockManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDockManager.swift; sourceTree = "<group>"; };
-		1AEE3DBC2CA3372000C93E60 /* DataPrivacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPrivacy.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -259,7 +255,6 @@
 				1AAE11D52C9B8B4100AF1F39 /* MainView.swift */,
 				1AAE11CF2C9B867D00AF1F39 /* MainViewController.swift */,
 				1AAE11DA2C9B908600AF1F39 /* MainVC + Action.swift */,
-				1AEE3DBC2CA3372000C93E60 /* DataPrivacy.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -349,7 +344,6 @@
 		1AD899692C9CE81200F9E65E /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				1AEE3DB92CA3358E00C93E60 /* UserDocks */,
 				1A4768582CA22B98004BD6BB /* Rackets */,
 				1AD899732C9DB60500F9E65E /* Scope */,
 				1AD899722C9DB60000F9E65E /* Level */,
@@ -393,14 +387,6 @@
 				1AD8997E2C9DD7EE00F9E65E /* GameScene + Star.swift */,
 			);
 			path = "GameScene + Items logic";
-			sourceTree = "<group>";
-		};
-		1AEE3DB92CA3358E00C93E60 /* UserDocks */ = {
-			isa = PBXGroup;
-			children = (
-				1AEE3DBA2CA335A200C93E60 /* UserDockManager.swift */,
-			);
-			path = UserDocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -495,10 +481,8 @@
 				1AAE11AC2C9B40B600AF1F39 /* AppDelegate.swift in Sources */,
 				1A47684C2CA1F7C1004BD6BB /* PauseView.swift in Sources */,
 				1A47685E2CA230DC004BD6BB /* ShopViewController + Action.swift in Sources */,
-				1AEE3DBB2CA335A200C93E60 /* UserDockManager.swift in Sources */,
 				1AAE11FB2C9CCF5C00AF1F39 /* LevelsVC + CollectionView.swift in Sources */,
 				1AAE11EB2C9C86C900AF1F39 /* GameScene + Meteor.swift in Sources */,
-				1AEE3DBD2CA3372000C93E60 /* DataPrivacy.swift in Sources */,
 				1A47684E2CA20C19004BD6BB /* MainCoordinatorViewModel.swift in Sources */,
 				1AAE11E62C9C346F00AF1F39 /* GameScene.swift in Sources */,
 				1AAE11D02C9B867D00AF1F39 /* MainViewController.swift in Sources */,
