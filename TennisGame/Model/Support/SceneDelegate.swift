@@ -17,8 +17,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func start() {
         coordinator = MainCoordinator()
         coordinator?.start()
-        window?.rootViewController = DataPrivacyViewController()
-//        window?.rootViewController = coordinator?.navigationController //main
+//        window?.rootViewController = DataPrivacyViewController()
+        window?.rootViewController = coordinator?.navigationController //main
         window?.makeKeyAndVisible()
     }
 

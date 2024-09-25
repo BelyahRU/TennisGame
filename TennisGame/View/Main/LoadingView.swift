@@ -25,7 +25,9 @@ class LoadingView: UIView {
     }()
     
     private var timer: Timer?
-    private var timerCounter: Int = 5
+    private var timerCounter: Int = 3
+    
+    weak var delegate: MainViewController?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -39,7 +41,6 @@ class LoadingView: UIView {
     private func configure() {
         setupSubviews()
         setupConstaints()
-        setupLoading()
     }
     
     private func setupSubviews() {
@@ -67,11 +68,13 @@ class LoadingView: UIView {
         
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
             self.timerCounter -= 1
-            if self.timerCounter == 0 {
+            if self.timerCounter <= 0 && self.progressView.progress == 1.0 {
+                self.delegate?.showMain()
+                self.removeFromSuperview()
                 timer.invalidate()
             }
         }
-        UIView.animate(withDuration: 5, animations: {
+        UIView.animate(withDuration: 3, animations: {
             self.progressView.setProgress(1.0, animated: true)
         })
     }
