@@ -76,10 +76,10 @@ final class LevelsView: UIView {
         let collectionViewHeight: CGFloat = 491 
         
         //for small screens
-        if screenHeight - collectionViewHeight < 124 {
+        if screenHeight  < 800 {
             backButton.snp.makeConstraints { make in
                 make.size.equalTo(60)
-                make.top.equalToSuperview().offset(10)
+                make.top.equalToSuperview().offset(20)
                 make.leading.equalToSuperview().offset(20)
             }
             
@@ -90,8 +90,8 @@ final class LevelsView: UIView {
                 make.leading.equalTo(backButton.snp.trailing).offset(10)
                 
             }
-            aster1Image.removeFromSuperview()
-            aster2Image.removeFromSuperview()
+//            aster1Image.removeFromSuperview()
+//            aster2Image.removeFromSuperview()
         } else {
             backButton.snp.makeConstraints { make in
                 make.size.equalTo(60)
@@ -126,12 +126,15 @@ final class LevelsView: UIView {
             make.edges.equalToSuperview()
         }
         let bottomSpaceNeeded: CGFloat = topOffset + collectionViewHeight + 50 + 80  // space from levelsLabel to bottom
+        let centery = screenHeight - 20 - levelsLabel.frame.height
+        print(centery)
         if bottomSpaceNeeded > screenHeight {
             levelsCollectionView.snp.makeConstraints { make in
                 make.centerX.equalToSuperview()
                 make.bottom.equalToSuperview().inset(5)
                 make.height.equalTo(collectionViewHeight)
                 make.width.equalTo(338)
+                
             }
             
         } else {

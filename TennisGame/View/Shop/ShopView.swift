@@ -130,23 +130,97 @@ class ShopView: UIView {
     }
     
     private func setupConstraints() {
+        let screenHeight = DataConstraints.screenHeight
+        if screenHeight < 800 {
+            backButton.snp.makeConstraints { make in
+                make.size.equalTo(60)
+                make.top.equalToSuperview().offset(20)
+                make.leading.equalToSuperview().offset(20)
+            }
+            
+            shopLabel.snp.makeConstraints { make in
+                make.width.equalTo(200)
+                make.height.equalTo(60)
+                make.centerY.equalTo(backButton.snp.centerY)
+                make.leading.equalTo(backButton.snp.trailing).offset(10)
+            }
+            
+            leftButton.snp.makeConstraints { make in
+                make.centerY.equalTo(racketView)
+                make.leading.equalToSuperview().offset(20)
+                make.width.equalTo(43)
+                make.height.equalTo(50)
+            }
+            
+            rightButton.snp.makeConstraints { make in
+                make.centerY.equalTo(racketView)
+                make.trailing.equalToSuperview().offset(-20)
+                make.width.equalTo(43)
+                make.height.equalTo(50)
+            }
+            
+            buyButton.snp.makeConstraints { make in
+                make.width.equalTo(150)
+                make.height.equalTo(50)
+                make.centerX.equalToSuperview()
+                make.bottom.equalToSuperview().offset(-25)
+            }
+            
+            takeButton.snp.makeConstraints { make in
+                make.width.equalTo(150)
+                make.height.equalTo(50)
+                make.centerX.equalToSuperview()
+                make.bottom.equalToSuperview().offset(-25)
+            }
+            
+        } else {
+            backButton.snp.makeConstraints { make in
+                make.size.equalTo(60)
+                make.top.equalToSuperview().offset(64)
+                make.leading.equalToSuperview().offset(20)
+            }
+            
+            shopLabel.snp.makeConstraints { make in
+                make.width.equalTo(200)
+                make.height.equalTo(60)
+                make.top.equalTo(backButton.snp.bottom).offset(-10)
+                make.centerX.equalToSuperview()
+                
+            }
+            
+            leftButton.snp.makeConstraints { make in
+                make.centerY.equalTo(racketView)
+                make.leading.equalToSuperview().offset(28)
+                make.width.equalTo(43)
+                make.height.equalTo(50)
+            }
+            
+            rightButton.snp.makeConstraints { make in
+                make.centerY.equalTo(racketView)
+                make.trailing.equalToSuperview().offset(-28)
+                make.width.equalTo(43)
+                make.height.equalTo(50)
+            }
+            
+            buyButton.snp.makeConstraints { make in
+                make.width.equalTo(150)
+                make.height.equalTo(50)
+                make.centerX.equalToSuperview()
+                make.top.equalTo(cloudImage.snp.bottom).offset(30)
+            }
+            
+            takeButton.snp.makeConstraints { make in
+                make.width.equalTo(150)
+                make.height.equalTo(50)
+                make.centerX.equalToSuperview()
+                make.top.equalTo(cloudImage.snp.bottom).offset(30)
+            }
+        }
         mainBackground.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
         
-        backButton.snp.makeConstraints { make in
-            make.size.equalTo(60)
-            make.top.equalToSuperview().offset(64)
-            make.leading.equalToSuperview().offset(20)
-        }
         
-        shopLabel.snp.makeConstraints { make in
-            make.width.equalTo(200)
-            make.height.equalTo(60)
-            make.top.equalTo(backButton.snp.bottom).offset(-10)
-            make.centerX.equalToSuperview()
-            
-        }
         
         asteroid1.snp.makeConstraints { make in
             make.size.equalTo(79)
@@ -180,20 +254,6 @@ class ShopView: UIView {
             make.top.equalTo(balanceImageView.snp.bottom).offset(30)
         }
         
-        leftButton.snp.makeConstraints { make in
-            make.centerY.equalTo(racketView)
-            make.leading.equalToSuperview().offset(28)
-            make.width.equalTo(43)
-            make.height.equalTo(50)
-        }
-        
-        rightButton.snp.makeConstraints { make in
-            make.centerY.equalTo(racketView)
-            make.trailing.equalToSuperview().offset(-28)
-            make.width.equalTo(43)
-            make.height.equalTo(50)
-        }
-        
         cloudImage.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.width.equalTo(182)
@@ -201,18 +261,5 @@ class ShopView: UIView {
             make.top.equalTo(racketView.snp.bottom).offset(15)
         }
         
-        buyButton.snp.makeConstraints { make in
-            make.width.equalTo(150)
-            make.height.equalTo(50)
-            make.centerX.equalToSuperview()
-            make.top.equalTo(cloudImage.snp.bottom).offset(30)
-        }
-        
-        takeButton.snp.makeConstraints { make in
-            make.width.equalTo(150)
-            make.height.equalTo(50)
-            make.centerX.equalToSuperview()
-            make.top.equalTo(cloudImage.snp.bottom).offset(30)
-        }
     }
 }

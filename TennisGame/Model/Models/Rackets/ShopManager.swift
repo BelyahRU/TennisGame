@@ -49,7 +49,7 @@ final class ShopManager {
         guard let racketIndex = rackets.firstIndex(where: { $0.id == racketId }) else { return false }
         let racket = rackets[racketIndex]
 
-        if ScopeManager.shared.spendScope(racket.price) {
+        if ScoreManager.shared.spendScore(racket.price) {
             rackets[racketIndex].isPurchased = true
             saveRackets()
             return true

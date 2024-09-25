@@ -4,7 +4,7 @@ import Foundation
 class GameSceneViewModel {
     
     let levelManager = LevelManager.shared
-    let scopeManager = ScopeManager.shared
+    let scopeManager = ScoreManager.shared
     let shopManager = ShopManager.shared
     
     init() { }
@@ -22,8 +22,8 @@ class GameSceneViewModel {
     }
     
     public func addScores(_ scores: Int) {
-        scopeManager.addScope(scores)
-        print("Total scores: \(scopeManager.getTotalScope())")
+        scopeManager.addScore(scores)
+        print("Total scores: \(scopeManager.getTotalScore())")
     }
     
     public func getRacketCurrentName() -> String {

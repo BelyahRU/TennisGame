@@ -4,7 +4,7 @@ import UIKit
 
 class ShopViewModel {
     let shopManager = ShopManager.shared
-    let scoreManager = ScopeManager.shared
+    let scoreManager = ScoreManager.shared
     
     func getAllRackets() -> [Racket] {
         return shopManager.getRackets()
@@ -33,7 +33,7 @@ class ShopViewModel {
     }
     
     func getBalance() -> Int{
-        return scoreManager.getTotalScope()
+        return scoreManager.getTotalScore()
     }
     
 }
